@@ -4,6 +4,7 @@ import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.command.CommandInfo;
 import com.findzach.mcessentials.command.CommandType;
 import com.findzach.mcessentials.command.SubCommand;
+import com.findzach.mcessentials.util.Messager;
 import org.bukkit.command.CommandSender;
 
 /**
@@ -13,8 +14,10 @@ import org.bukkit.command.CommandSender;
 
 @CommandInfo(name = "mce reload", permission = "essentials.reload", description = "Essentials Reload", commandType = CommandType.SUB_COMMAND)
 public class EssentialsReloadCommand implements SubCommand {
+
     @Override
     public void execute(CommandSender sender, String subCommand, String[] args) {
         MCEssentials.getInstance().reloadPluginConfig();
+        Messager.send(sender, "&cReloaded MCEssentials Config!");
     }
 }

@@ -71,8 +71,8 @@ public class CommandManager {
         return Optional.ofNullable(commandMap.get(name));
     }
 
-    public Optional<Command> getSubCommand(String name) {
-        return Optional.ofNullable(commandMap.get(name));
+    public Optional<SubCommand> getSubCommand(String name) {
+        return Optional.ofNullable(subCommandMap.get(name));
     }
 
     public static CommandManager getInstance() {

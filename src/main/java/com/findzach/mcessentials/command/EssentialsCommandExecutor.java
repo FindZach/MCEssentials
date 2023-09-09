@@ -33,20 +33,22 @@ public class EssentialsCommandExecutor implements org.bukkit.command.CommandExec
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
         Optional<Command> command = registry.getCommand(cmd.getName());
 
-        Optional<Command> subCommand = registry.getSubCommand(cmd.getName());
+        String fullCommand = cmd.getName() + " " + String.join(" ", args);
+
+        Optional<SubCommand> subCommand = registry.getSubCommand(fullCommand);
 
         if (args.length > 0) {
             if (subCommand.isPresent()) {
-                if (sender.hasPermission(command.get().getPermission())) {
+                if (sender.hasPermission(subCommand.get().getPermission())) {
                     if (subCommand.get() instanceof PlayerSubCommand) {
                         if (sender instanceof Player) {
                             Player player = (Player) sender;
-                            subCommand.get().execute(player, args);
+                            subCommand.get().execute(player, fullCommand, args);
                         } else {
                             sender.sendMessage(ChatColor.RED + "[MCEssentials] Command: '" + cmd.getName() + "' is a Player only command!");
                         }
                     } else {
-                        subCommand.get().execute(sender, args);
+                        subCommand.get().execute(sender, fullCommand, args);
                     }
                     return true;
                 } else {
@@ -54,7 +56,7 @@ public class EssentialsCommandExecutor implements org.bukkit.command.CommandExec
                     return false;
                 }
             } else {
-                System.out.println("SubCommand is not present! " + cmd.getName());
+                System.out.println("SubCommand is not present! " + fullCommand);
             }
         }
 
