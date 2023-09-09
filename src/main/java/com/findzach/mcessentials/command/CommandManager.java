@@ -34,9 +34,7 @@ public class CommandManager {
                 if (info == null || info.name().isBlank()) continue;
 
                 registerCommand(info.name(), commandInstance);
-                System.out.println("Info Name: " + info.name());
                 MCEssentials.getInstance().getCommand(info.name()).setExecutor(essentialsCommandExecutor);
-                System.out.println("Submitted and done");
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }

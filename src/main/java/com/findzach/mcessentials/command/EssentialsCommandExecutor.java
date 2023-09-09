@@ -1,5 +1,6 @@
 package com.findzach.mcessentials.command;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -34,10 +35,13 @@ public class EssentialsCommandExecutor implements org.bukkit.command.CommandExec
         if (command.isPresent()) {
             if (sender.hasPermission(command.get().getPermission())) {
                 if (command.get() instanceof PlayerCommand) {
-                    Player player = (Player) sender;
-                    command.get().execute(player, args);
+                    if (sender instanceof Player) {
+                        Player player = (Player) sender;
+                        command.get().execute(player, args);
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "[MCEssentials] Command: '" + cmd.getName() + "' is a Player only command!");
+                    }
                 } else {
-                    System.out.println("This is not a PlayerCommand!");
                     command.get().execute(sender, args);
                 }
                 return true;
