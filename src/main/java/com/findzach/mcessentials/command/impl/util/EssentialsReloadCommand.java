@@ -14,7 +14,7 @@ import org.bukkit.command.CommandSender;
 @CommandInfo(name = "mce reload", permission = "essentials.reload", description = "Essentials Reload", commandType = CommandType.SUB_COMMAND)
 public class EssentialsReloadCommand implements SubCommand {
     @Override
-    public void handleSubCommand(CommandSender sender, String subCommand, String[] args) {
+    public void execute(CommandSender sender, String subCommand, String[] args) {
         MCEssentials.getInstance().reloadPluginConfig();
     }
 }

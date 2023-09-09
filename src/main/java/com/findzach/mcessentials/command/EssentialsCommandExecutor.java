@@ -32,6 +32,32 @@ public class EssentialsCommandExecutor implements org.bukkit.command.CommandExec
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
         Optional<Command> command = registry.getCommand(cmd.getName());
+
+        Optional<Command> subCommand = registry.getSubCommand(cmd.getName());
+
+        if (args.length > 0) {
+            if (subCommand.isPresent()) {
+                if (sender.hasPermission(command.get().getPermission())) {
+                    if (subCommand.get() instanceof PlayerSubCommand) {
+                        if (sender instanceof Player) {
+                            Player player = (Player) sender;
+                            subCommand.get().execute(player, args);
+                        } else {
+                            sender.sendMessage(ChatColor.RED + "[MCEssentials] Command: '" + cmd.getName() + "' is a Player only command!");
+                        }
+                    } else {
+                        subCommand.get().execute(sender, args);
+                    }
+                    return true;
+                } else {
+                    sender.sendMessage("You do not have permission to use this command.");
+                    return false;
+                }
+            } else {
+                System.out.println("SubCommand is not present! " + cmd.getName());
+            }
+        }
+
         if (command.isPresent()) {
             if (sender.hasPermission(command.get().getPermission())) {
                 if (command.get() instanceof PlayerCommand) {

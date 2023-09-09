@@ -7,5 +7,5 @@ import org.bukkit.command.CommandSender;
  * @since 9/9/2023
  */
 public interface SubCommand {
-    void handleSubCommand(CommandSender sender, String subCommand, String[] args);
+    void execute(CommandSender sender, String subCommand, String[] args);
 }
