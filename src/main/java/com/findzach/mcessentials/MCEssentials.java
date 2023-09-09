@@ -49,10 +49,12 @@ public final class MCEssentials extends JavaPlugin {
 
     public void reloadPluginConfig() {
         reloadConfig(); // reloads the config if there are changes in the file
+        this.languageManager.reloadConfig();
+        onDisable();
+        onEnable();
     }
 
     public String getMessage(String path) {
-        System.out.println("Getting : " + path);
         return languageManager.getConfig().getString(path);
     }
 }

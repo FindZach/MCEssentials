@@ -1,3 +1,17 @@
-message_prefix: "&a[&5MCEssentials&a]&l"
-hello_message: "¡Hola, Mundo!"
-farewell_message: "¡Adiós!"
+#General Settings, Message Notifications Prefix
+message_prefix: "&a[&3MCEssentials&a]&c&l "
+
+#Command Responses
+ping: "&c¡Pong!"
+gmc: "&cAhora estás en modo creativo!"
+gms: "&cAhora estás en modo supervivencia!"
+gma: "&cAhora estás en modo aventura!"
+gmspec: "&cAhora estás en modo espectador!"
+time-change: "&cHas configurado el tiempo a "
+fly: "&cTu modo de vuelo ha sido activado/desactivado"
+fly-other: "&6Has configurado el vuelo para [selectedName]"
+heal: "&6¡Has sido sanado!"
+feed: "&6¡Has sido alimentado!"
+
+#Error Messages
+invalid-player: "&cJugador inválido: [InvalidName]"

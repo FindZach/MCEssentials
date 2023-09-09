@@ -1,3 +1,17 @@
-message_prefix: "&a[&5MCEssentials&a]&l"
-hello_message: "Привет, мир!"
-farewell_message: "До свидания!"
+#General Settings, Message Notifications Prefix
+message_prefix: "&a[&3MCEssentials&a]&c&l "
+
+#Command Responses
+ping: "&cПонг!"
+gmc: "&cТеперь вы в режиме творчества!"
+gms: "&cТеперь вы в режиме выживания!"
+gma: "&cТеперь вы в режиме приключений!"
+gmspec: "&cТеперь вы в режиме зрителя!"
+time-change: "&cВы установили время на "
+fly: "&cРежим полета был переключен"
+fly-other: "&6Вы установили режим полета для [selectedName]"
+heal: "&6Вы были исцелены!"
+feed: "&6Вы были накормлены!"
+
+#Error Messages
+invalid-player: "&cНеверный игрок: [InvalidName]"
