@@ -14,5 +14,5 @@ public interface PlayerCommand extends Command {
         execute((Player) sender, args);
     }
 
-    void execute(Player sender, String[] args);
+    void execute(Player player, String[] args);
 }

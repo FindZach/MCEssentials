@@ -23,3 +23,11 @@ commands:
     description: Ping command
     usage: /<command>
     permission: essentials.ping
+  day:
+    description: Changes the time to Day
+    usage: /<command>
+    permission: essentials.day
+  fly:
+    description: Toggles fly for user
+    usage: /<command>
+    permission: essentials.fly
