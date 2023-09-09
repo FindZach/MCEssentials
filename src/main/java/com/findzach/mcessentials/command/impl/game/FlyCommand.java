@@ -13,6 +13,8 @@ import org.bukkit.entity.Player;
 public class FlyCommand implements PlayerCommand {
     @Override
     public void execute(Player player, String[] args) {
-       player.setFlying(!player.isFlying());
+        boolean opposite = !player.isFlying();
+
+        player.setAllowFlight(opposite);
     }
 }
