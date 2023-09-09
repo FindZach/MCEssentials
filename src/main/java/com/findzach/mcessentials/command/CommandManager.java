@@ -18,6 +18,7 @@ public class CommandManager {
 
     private static CommandManager instance = new CommandManager();
     private Map<String, Command> commandMap = new HashMap<>();
+    private Map<String, SubCommand> subCommandMap = new HashMap<>();
 
     private EssentialsCommandExecutor essentialsCommandExecutor;
     public CommandManager() {
@@ -28,12 +29,23 @@ public class CommandManager {
 
         for (Class<?> clazz : annotated) {
             try {
-                Command commandInstance = (Command) clazz.newInstance();
                 CommandInfo info = clazz.getAnnotation(CommandInfo.class);
+
+                if (clazz.newInstance() instanceof Command) {
+                Command commandInstance = (Command) clazz.newInstance();
+
                 if (info == null || info.name().isBlank()) continue;
 
                 registerCommand(info.name(), commandInstance);
                 MCEssentials.getInstance().getCommand(info.name()).setExecutor(essentialsCommandExecutor);
+
+                } else {
+
+                    if (info.commandType() == CommandType.SUB_COMMAND) {
+                        System.out.println("Register name: " + info.name());
+                        registerSubCommand(info.name(), (SubCommand) clazz.newInstance());
+                    }
+                }
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -49,6 +61,10 @@ public class CommandManager {
 
     private void registerCommand(String name, Command command) {
         commandMap.put(name, command);
+    }
+
+    private void registerSubCommand(String name, SubCommand command) {
+        subCommandMap.put(name, command);
     }
 
     public Optional<Command> getCommand(String name) {

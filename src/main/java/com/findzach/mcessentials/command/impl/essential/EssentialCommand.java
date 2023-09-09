@@ -1,6 +1,5 @@
-package com.findzach.mcessentials.command.impl;
+package com.findzach.mcessentials.command.impl.essential;
 
-import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.command.Command;
 import com.findzach.mcessentials.command.CommandInfo;
 import com.findzach.mcessentials.command.CommandType;
@@ -11,11 +10,12 @@ import org.bukkit.command.CommandSender;
  * @author Zach S <zach@findzach.com>
  * @since 9/9/2023
  */
-@CommandInfo(name = "ping", permission = "essentials.ping", description = "Sends a pong response", commandType = CommandType.COMMAND)
-public class PingCommand implements Command {
+
+@CommandInfo(name = "mce", permission = "essentials.essential", description = "Sends a pong response", commandType = CommandType.COMMAND)
+public class EssentialCommand implements Command {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        Messager.send(sender, MCEssentials.getInstance().getMessage("ping"));
+        Messager.send(sender, "&aEssentials Version: v1");
     }
 }

@@ -1,8 +1,10 @@
 package com.findzach.mcessentials.command.impl.gamemode;
 
+import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.command.CommandInfo;
 import com.findzach.mcessentials.command.CommandType;
 import com.findzach.mcessentials.command.PlayerCommand;
+import com.findzach.mcessentials.util.Messager;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -16,6 +18,6 @@ public class SurvivalCommand implements PlayerCommand {
     @Override
     public void execute(Player sender, String[] args) {
         sender.setGameMode(GameMode.SURVIVAL);
-        sender.sendMessage("Your game mode is now survival");
+        Messager.send(sender, MCEssentials.getInstance().getMessage("gms"));
     }
 }

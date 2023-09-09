@@ -1,7 +1,7 @@
 name: MCEssentials
 version: '${project.version}'
 main: com.findzach.mcessentials.MCEssentials
-api-version: 1.20
+softdepend: [PlaceholderAPI]
 commands:
   gmc:
     description: Change Gamemode to Creative
@@ -31,3 +31,10 @@ commands:
     description: Toggles fly for user
     usage: /<command>
     permission: essentials.fly
+  mce:
+    description: Essentials base command
+    aliases:
+      - essentials
+      - essential
+    usage: /<command>
+    permission: essentials.mce
