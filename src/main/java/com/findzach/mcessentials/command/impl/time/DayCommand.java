@@ -3,6 +3,7 @@ package com.findzach.mcessentials.command.impl.time;
 import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.command.Command;
 import com.findzach.mcessentials.command.CommandInfo;
+import com.findzach.mcessentials.command.CommandType;
 import com.findzach.mcessentials.util.TimeUtility;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -13,7 +14,7 @@ import org.bukkit.entity.Player;
  * @author Zach S <zach@findzach.com>
  * @since 9/9/2023
  */
-@CommandInfo(name = "day", permission = "essentials.day", description = "Sets the time to day")
+@CommandInfo(name = "day", permission = "essentials.day", description = "Sets the time to day", commandType = CommandType.COMMAND)
 public class DayCommand implements Command {
     @Override
     public void execute(CommandSender sender, String[] args) {

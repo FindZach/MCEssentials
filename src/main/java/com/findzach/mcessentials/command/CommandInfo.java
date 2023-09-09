@@ -15,4 +15,5 @@ public @interface CommandInfo {
     String name();
     String permission();
     String description();
+    CommandType commandType();
 }

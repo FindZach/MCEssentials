@@ -14,7 +14,8 @@ public final class MCEssentials extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        // Plugin startup logic
+
+        saveDefaultConfig(); // if no config exists, this will save the default one from your resources
 
         commandManager = new CommandManager();
     }
@@ -22,10 +23,15 @@ public final class MCEssentials extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        commandManager = null;
+        instance = null;
     }
 
     public static MCEssentials getInstance() {
         return instance;
+    }
+
+    public void reloadPluginConfig() {
+        reloadConfig(); // reloads the config if there are changes in the file
     }
 }

@@ -2,6 +2,7 @@ package com.findzach.mcessentials.command.impl;
 
 import com.findzach.mcessentials.command.Command;
 import com.findzach.mcessentials.command.CommandInfo;
+import com.findzach.mcessentials.command.CommandType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -9,7 +10,7 @@ import org.bukkit.command.CommandSender;
  * @author Zach S <zach@findzach.com>
  * @since 9/9/2023
  */
-@CommandInfo(name = "ping", permission = "essentials.ping", description = "Sends a pong response")
+@CommandInfo(name = "ping", permission = "essentials.ping", description = "Sends a pong response", commandType = CommandType.COMMAND)
 public class PingCommand implements Command {
 
     @Override

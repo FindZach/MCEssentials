@@ -19,7 +19,6 @@ public class CommandManager {
     private static CommandManager instance = new CommandManager();
     private Map<String, Command> commandMap = new HashMap<>();
 
-
     private EssentialsCommandExecutor essentialsCommandExecutor;
     public CommandManager() {
         // Dynamically load classes with the CommandInfo annotation
