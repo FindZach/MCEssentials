@@ -1,5 +1,6 @@
 package com.findzach.mcessentials.command;
 
+import com.findzach.mcessentials.MCEssentials;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -33,20 +34,17 @@ public class EssentialsCommandExecutor implements org.bukkit.command.CommandExec
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
         String fullCommand = args.length > 0 ? cmd.getName() + " " + String.join(" ", args) : cmd.getName();
 
-        Optional<SubCommand> subCommand = registry.getSubCommand(fullCommand);
-        if (subCommand.isPresent()) {
-            return handleSubCommandExecution(subCommand.get(), sender, fullCommand, args);
-        } else if (args.length > 0) {
-            System.out.println("SubCommand is not present! " + fullCommand);
-        }
-
-        Optional<Command> command = registry.getCommand(cmd.getName());
-        if (command.isPresent()) {
-            return handleCommandExecution(command.get(), sender, args);
+        if (args.length > 0) {
+            Optional<SubCommand> subCommand = registry.getSubCommand(fullCommand);
+            if (subCommand.isPresent()) {
+                return handleSubCommandExecution(subCommand.get(), sender, fullCommand, args);
+            }
         } else {
-            System.out.println("Command is not present! " + cmd.getName());
+            Optional<Command> command = registry.getCommand(cmd.getName());
+            if (command.isPresent()) {
+                return handleCommandExecution(command.get(), sender, args);
+            }
         }
-
         return false;
     }
 

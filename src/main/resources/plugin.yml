@@ -50,3 +50,7 @@ commands:
     description: Feed command
     usage: /<command>
     permission: essentials.feed
+  feature:
+    description: Feed command
+    usage: /<command>
+    permission: essentials.feed

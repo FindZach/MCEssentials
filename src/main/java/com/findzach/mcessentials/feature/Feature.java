@@ -13,12 +13,17 @@ public abstract class Feature implements Listener {
 
     protected FeatureConfig config; // Every feature now has a config associated with it
 
-    private boolean isActive = false;
+    private boolean isActive = true;
 
     public Feature() {
         config = new FeatureConfig(getFeatureName());
+        if (config.isNewlyCreated()) { // Check if this config was just created
+            setConfigDefaults(); // Feature-specific defaults
+            config.save(); // Save the defaults to the file
+        }
+        MCEssentials.getInstance().getServer().getPluginManager().registerEvents(this, MCEssentials.getInstance());
     }
-
+    protected abstract void setConfigDefaults();
     public boolean isEnabled() {
         return MCEssentials.getInstance().getConfig().getBoolean("feature."+getFeatureName());
     }
@@ -33,7 +38,7 @@ public abstract class Feature implements Listener {
         } else enableFeature();
     }
 
-    abstract void enableFeature();
-    abstract void disableFeature();
-    abstract String getFeatureName();
+    protected abstract void enableFeature();
+    protected abstract void disableFeature();
+    protected abstract String getFeatureName();
 }

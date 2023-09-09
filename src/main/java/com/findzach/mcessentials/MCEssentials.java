@@ -2,6 +2,7 @@ package com.findzach.mcessentials;
 
 import com.findzach.mcessentials.command.CommandManager;
 import com.findzach.mcessentials.config.lang.LanguageManager;
+import com.findzach.mcessentials.feature.FeatureManager;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.PlaceholderHook;
 import org.bukkit.Bukkit;
@@ -13,6 +14,8 @@ public final class MCEssentials extends JavaPlugin {
 
     private CommandManager commandManager;
     private LanguageManager languageManager;
+
+    private FeatureManager featureManager;
 
     private boolean PLACE_HOLDER_API_ACTIVE = false;
 
@@ -26,6 +29,7 @@ public final class MCEssentials extends JavaPlugin {
 
         languageManager = new LanguageManager(lang);
         commandManager = new CommandManager();
+        featureManager = new FeatureManager();
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             PLACE_HOLDER_API_ACTIVE = true;

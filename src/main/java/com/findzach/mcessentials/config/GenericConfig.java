@@ -7,14 +7,10 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * @author Zach S <zach@findzach.com>
- * @since 9/9/2023
- */
-
-public class GenericConfig {
+public abstract class GenericConfig {
     protected final File configFile;
     protected FileConfiguration configuration;
+    private boolean newlyCreated = false;
 
     public GenericConfig(String directory, String fileName) {
         configFile = new File(MCEssentials.getInstance().getDataFolder() + "/" + directory, fileName + ".yml");
@@ -22,8 +18,8 @@ public class GenericConfig {
         // Check if the config file exists, if not create it.
         if (!configFile.exists()) {
             try {
-                configFile.getParentFile().mkdirs(); // Ensures the directory exists
-                configFile.createNewFile();
+                createConfigFile();
+                newlyCreated = true;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -32,9 +28,20 @@ public class GenericConfig {
         configuration = YamlConfiguration.loadConfiguration(configFile);
     }
 
+    private void createConfigFile() throws IOException {
+        configFile.getParentFile().mkdirs(); // Ensures the directory exists
+        configFile.createNewFile();
+    }
+
     public FileConfiguration getConfig() {
         return configuration;
     }
+
+    public boolean isNewlyCreated() {
+        return newlyCreated;
+    }
+
+    protected abstract void setConfigDefaults();
 
     public void save() {
         try {
