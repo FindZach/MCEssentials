@@ -2,6 +2,7 @@ package com.findzach.mcessentials.command.impl.gamemode;
 
 import com.findzach.mcessentials.command.CommandInfo;
 import com.findzach.mcessentials.command.PlayerCommand;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 /**
@@ -12,6 +13,7 @@ import org.bukkit.entity.Player;
 public class SpectatorCommand implements PlayerCommand {
     @Override
     public void execute(Player sender, String[] args) {
-        sender.sendMessage("Your game mode is now creative");
+        sender.setGameMode(GameMode.SPECTATOR);
+        sender.sendMessage("You're now in Spectator Mode!");
     }
 }
