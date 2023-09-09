@@ -1,0 +1,25 @@
+name: MCEssentials
+version: '${project.version}'
+main: com.findzach.mcessentials.MCEssentials
+api-version: 1.20
+commands:
+  gmc:
+    description: Change Gamemode to Creative
+    usage: /<command>
+    permission: essentials.gamemode.creative
+  gms:
+    description: Change Gamemode to Survival
+    usage: /<command>
+    permission: essentials.gamemode.survival
+  gma:
+    description: Change Gamemode to Adventure
+    usage: /<command>
+    permission: essentials.gamemode.adventure
+  gmspec:
+    description: Change Gamemode to Spectator
+    usage: /<command>
+    permission: essentials.gamemode.spectator
+  ping:
+    description: Ping command
+    usage: /<command>
+    permission: essentials.ping
