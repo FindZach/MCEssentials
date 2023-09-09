@@ -25,6 +25,6 @@ public class FlyCommand implements SubCommand {
             return;
         }
         selectedPlayer.setAllowFlight(!selectedPlayer.getAllowFlight());
-        Messager.send(sender, MCEssentials.getInstance().getMessage("fly-other").replaceAll("[selectedName]", selectedPlayer.getDisplayName()));
+        Messager.send(sender, MCEssentials.getInstance().getMessage("fly-other").replace("[selectedName]", selectedPlayer.getDisplayName()));
     }
 }

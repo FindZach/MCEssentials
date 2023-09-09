@@ -15,20 +15,20 @@ import org.bukkit.entity.Player;
  * @author Zach S <zach@findzach.com>
  * @since 9/9/2023
  */
-@CommandInfo(name = "day", permission = "essentials.day", description = "Sets the time to day", commandType = CommandType.COMMAND)
-public class DayCommand implements Command {
+@CommandInfo(name = "night", permission = "essentials.night", description = "Sets the time to night", commandType = CommandType.COMMAND)
+public class NightCommand implements Command {
     @Override
     public void execute(CommandSender sender, String[] args) {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            Messager.send(player, TimeUtility.setTime(TimeUtility.Time.DAY, player.getWorld()));
+            Messager.send(player, TimeUtility.setTime(TimeUtility.Time.NIGHT, player.getWorld()));
         } else {
             if (args.length > 0) {
                 String world = args[0];
                 World selectedWorld = MCEssentials.getInstance().getServer().getWorld(world);
                 if (selectedWorld != null) {
-                    Messager.send(sender, TimeUtility.setTime(TimeUtility.Time.DAY, selectedWorld));
+                    Messager.send(sender, TimeUtility.setTime(TimeUtility.Time.NIGHT, selectedWorld));
                 } else {
                     sender.sendMessage(ChatColor.RED + "INVALID World " + args[0]);
                 }

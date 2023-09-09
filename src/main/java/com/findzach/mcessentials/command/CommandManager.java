@@ -5,10 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.reflections.Reflections;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Zach S <zach@findzach.com>
@@ -72,8 +69,30 @@ public class CommandManager {
     }
 
     public Optional<SubCommand> getSubCommand(String name) {
-        return Optional.ofNullable(subCommandMap.get(name));
+        List<String> splitName = Arrays.asList(name.split(" "));
+
+        Optional<SubCommand> optionalSubCommand = Optional.ofNullable(null);
+
+        for (String subCommand: subCommandMap.keySet()) {
+            if (name.equalsIgnoreCase(subCommand)) {
+                optionalSubCommand = Optional.of(subCommandMap.get(subCommand));
+            }
+        }
+
+        for (String subCommand: subCommandMap.keySet()) {
+            String filteredCommand = removeAngleBracketContent(subCommand);
+            if (splitName.get(0).equalsIgnoreCase(filteredCommand)) {
+                optionalSubCommand = Optional.of(subCommandMap.get(subCommand));
+            }
+        }
+
+        return optionalSubCommand;
     }
+
+    public String removeAngleBracketContent(String input) {
+        return input.replaceAll("\\s*<[^>]*>\\s*", " ").trim();
+    }
+
 
     public static CommandManager getInstance() {
         return instance;

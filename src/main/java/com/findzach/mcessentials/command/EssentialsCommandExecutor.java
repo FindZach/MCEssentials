@@ -31,56 +31,63 @@ public class EssentialsCommandExecutor implements org.bukkit.command.CommandExec
      */
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
-        Optional<Command> command = registry.getCommand(cmd.getName());
-
-        String fullCommand = cmd.getName() + " " + String.join(" ", args);
+        String fullCommand = args.length > 0 ? cmd.getName() + " " + String.join(" ", args) : cmd.getName();
 
         Optional<SubCommand> subCommand = registry.getSubCommand(fullCommand);
-
-        if (args.length > 0) {
-            if (subCommand.isPresent()) {
-                if (sender.hasPermission(subCommand.get().getPermission())) {
-                    if (subCommand.get() instanceof PlayerSubCommand) {
-                        if (sender instanceof Player) {
-                            Player player = (Player) sender;
-                            subCommand.get().execute(player, fullCommand, args);
-                        } else {
-                            sender.sendMessage(ChatColor.RED + "[MCEssentials] Command: '" + cmd.getName() + "' is a Player only command!");
-                        }
-                    } else {
-                        subCommand.get().execute(sender, fullCommand, args);
-                    }
-                    return true;
-                } else {
-                    sender.sendMessage("You do not have permission to use this command.");
-                    return false;
-                }
-            } else {
-                System.out.println("SubCommand is not present! " + fullCommand);
-            }
+        if (subCommand.isPresent()) {
+            return handleSubCommandExecution(subCommand.get(), sender, fullCommand, args);
+        } else if (args.length > 0) {
+            System.out.println("SubCommand is not present! " + fullCommand);
         }
 
+        Optional<Command> command = registry.getCommand(cmd.getName());
         if (command.isPresent()) {
-            if (sender.hasPermission(command.get().getPermission())) {
-                if (command.get() instanceof PlayerCommand) {
-                    if (sender instanceof Player) {
-                        Player player = (Player) sender;
-                        command.get().execute(player, args);
-                    } else {
-                        sender.sendMessage(ChatColor.RED + "[MCEssentials] Command: '" + cmd.getName() + "' is a Player only command!");
-                    }
-                } else {
-                    command.get().execute(sender, args);
-                }
-                return true;
-            } else {
-                sender.sendMessage("You do not have permission to use this command.");
-                return false;
-            }
+            return handleCommandExecution(command.get(), sender, args);
         } else {
             System.out.println("Command is not present! " + cmd.getName());
         }
+
         return false;
+    }
+
+    private boolean handleSubCommandExecution(SubCommand subCmd, CommandSender sender, String fullCommand, String[] args) {
+        if (!sender.hasPermission(subCmd.getPermission())) {
+            sender.sendMessage("You do not have permission to use this command.");
+            return false;
+        }
+
+        if (subCmd instanceof PlayerSubCommand && !(sender instanceof Player)) {
+            sender.sendMessage(ChatColor.RED + "[MCEssentials] Command: '" + fullCommand.split(" ")[0] + "' is a Player only command!");
+            return false;
+        }
+
+        if (sender instanceof Player) {
+            subCmd.execute((Player) sender, fullCommand, args);
+        } else {
+            subCmd.execute(sender, fullCommand, args);
+        }
+
+        return true;
+    }
+
+    private boolean handleCommandExecution(Command cmd, CommandSender sender, String[] args) {
+        if (!sender.hasPermission(cmd.getPermission())) {
+            sender.sendMessage("You do not have permission to use this command.");
+            return false;
+        }
+
+        if (cmd instanceof PlayerCommand && !(sender instanceof Player)) {
+            sender.sendMessage(ChatColor.RED + "[MCEssentials] Command: '" + cmd.getName() + "' is a Player only command!");
+            return false;
+        }
+
+        if (sender instanceof Player) {
+            cmd.execute((Player) sender, args);
+        } else {
+            cmd.execute(sender, args);
+        }
+
+        return true;
     }
 
 }

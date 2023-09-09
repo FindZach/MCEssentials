@@ -13,8 +13,8 @@ public class TimeUtility {
 
     public enum Time {
         DAY(0),
-        NIGHT(1200),
-        AFTERNOON(600);
+        NIGHT(14000),
+        AFTERNOON(6000);
 
         private int timeValue;
 
@@ -31,7 +31,7 @@ public class TimeUtility {
         String response = "Unable to set the time for the selected world";
         if (world != null) {
             world.setTime(time.getTimeValue());
-            response = "Successfully set the time to " + time.name();
+            response = MCEssentials.getInstance().getMessage("time-change") + time.name();
         }
         return response;
     }

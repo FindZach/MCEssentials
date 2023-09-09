@@ -27,6 +27,10 @@ commands:
     description: Changes the time to Day
     usage: /<command>
     permission: essentials.day
+  night:
+    description: Changes the time to night
+    usage: /<command>
+    permission: essentials.night
   fly:
     description: Toggles fly for user
     usage: /<command>
@@ -38,3 +42,11 @@ commands:
       - essential
     usage: /<command>
     permission: essentials.mce
+  heal:
+    description: Heal command
+    usage: /<command>
+    permission: essentials.heal
+  feed:
+    description: Feed command
+    usage: /<command>
+    permission: essentials.feed
