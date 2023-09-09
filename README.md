@@ -1,0 +1,3 @@
+# MCEssentials
+
+Minecraft Essentials Plugin
