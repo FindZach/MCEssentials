@@ -1,9 +1,6 @@
 #General Settings, Message Notifications Prefix
 message_prefix: "&a[&3MCEssentials&a]&c&l "
 
-hello_message: "Hello, World!"
-farewell_message: "Goodbye!"
-
 #Command Responses
 ping: "&cPong!"
 gmc: "&cYou're now in creative mode!"
