@@ -1,0 +1,29 @@
+# Compiled bytecode
+*.class
+
+# IDE files and directories (assuming you're using IntelliJ IDEA or Eclipse)
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+
+# Maven target directory (contains compiled code and packaged JARs)
+/target/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+*.log
+
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Other potential directories and files you might generate and not want to track
+/config.yml
+data/
