@@ -32,6 +32,16 @@ public class Sit extends Feature {
         return FeatureType.SIT;
     }
 
+    @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
+
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();

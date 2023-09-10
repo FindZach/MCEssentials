@@ -17,4 +17,14 @@ public class EconomyManager extends Feature {
         return FeatureType.ECONOMY;
     }
 
+    @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
+
 }

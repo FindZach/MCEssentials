@@ -18,4 +18,14 @@ public class FirstJoinSetup extends Feature {
         return FeatureType.FIRST_JOIN;
     }
 
+    @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
+
 }

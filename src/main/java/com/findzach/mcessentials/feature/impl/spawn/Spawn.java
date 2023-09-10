@@ -18,4 +18,14 @@ public class Spawn extends Feature {
         return FeatureType.SPAWN;
     }
 
+    @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
+
 }

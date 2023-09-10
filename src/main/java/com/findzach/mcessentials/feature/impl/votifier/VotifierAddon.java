@@ -33,6 +33,16 @@ public class VotifierAddon extends Feature {
     }
 
     @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
+
+    @Override
     protected void enableFeature() {
         super.enableFeature();
     }

@@ -56,6 +56,9 @@ public abstract class Feature implements Listener {
 
     public abstract FeatureType getFeatureType();
 
+    public abstract void onEnable();
+    public abstract void onDisable();
+
     protected void enableFeature() {
         setActive(true);
     }
