@@ -1,0 +1,6 @@
+# ---------------------- Economy Feature - MCEssentials ----------------------
+isEnabled: true
+
+
+economy-details:
+  currency-name: "dollars"
