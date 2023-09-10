@@ -16,6 +16,7 @@ public abstract class Feature implements Listener {
     private boolean isActive = true;
 
     public Feature() {
+        System.out.println("FEATURE STARTED: " + getFeatureType().getName());
         config = new FeatureConfig(getFeatureType().getConfigName());
         if (config.isNewlyCreated()) { // Check if this config was just created
             addIsEnabledConfig();
@@ -27,7 +28,9 @@ public abstract class Feature implements Listener {
         setActive(getFeatureConfig().getBoolean("isEnabled"));
 
         if (isActive) {
-            MCEssentials.getInstance().getServer().getPluginManager().registerEvents(this, MCEssentials.getInstance());
+            enableFeature();
+        } else {
+            disableFeature();
         }
     }
 
@@ -60,9 +63,12 @@ public abstract class Feature implements Listener {
     public abstract void onDisable();
 
     protected void enableFeature() {
+        onEnable();
+        MCEssentials.getInstance().getServer().getPluginManager().registerEvents(this, MCEssentials.getInstance());
         setActive(true);
     }
     protected void disableFeature() {
+        onDisable();
         setActive(false);
     }
     public String getFeatureName() {

@@ -1,5 +1,6 @@
 package com.findzach.mcessentials.feature.impl.motd;
 
+import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.config.ConfigKey;
 import com.findzach.mcessentials.feature.Feature;
 import com.findzach.mcessentials.feature.FeatureType;
@@ -17,9 +18,9 @@ import java.util.List;
  */
 public class MOTD extends Feature {
 
-    private List<String> randomMOTDMessages = new ArrayList<>();
+    private static List<String> randomMOTDMessages = new ArrayList<>();
 
-    private boolean randomMOTD = getFeatureConfig().getBoolean(ConfigKey.FEATURE_MOTD_RANDOM.getKey());
+    private static boolean randomMOTD = false;
 
     @Override
     protected void setConfigDefaults() {}
@@ -32,6 +33,7 @@ public class MOTD extends Feature {
     @Override
     public void onEnable() {
         randomMOTDMessages = getFeatureConfig().getStringList("random.MOTD");
+        randomMOTD = getFeatureConfig().getBoolean(ConfigKey.FEATURE_MOTD_RANDOM.getKey());
     }
 
     @Override
@@ -41,12 +43,14 @@ public class MOTD extends Feature {
 
     @EventHandler
     public void onEvent(final ServerListPingEvent event) {
-        String motdMessage = getFeatureConfig().getString("MOTD");
+        if (isEnabled()) {
+            String motdMessage = getFeatureConfig().getString("MOTD");
 
-        if (randomMOTD && randomMOTDMessages != null && !randomMOTDMessages.isEmpty()) {
-            motdMessage = Utility.getRandomString(randomMOTDMessages);
+            if (randomMOTD && randomMOTDMessages != null && !randomMOTDMessages.isEmpty()) {
+                motdMessage = Utility.getRandomString(randomMOTDMessages);
+            }
+
+            event.setMotd(ChatColor.translateAlternateColorCodes('&', motdMessage));
         }
-
-        event.setMotd(ChatColor.translateAlternateColorCodes('&', motdMessage));
     }
 }

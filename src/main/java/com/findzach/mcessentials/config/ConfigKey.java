@@ -24,7 +24,7 @@ public enum ConfigKey {
     GMSPEC_SELF("gmspec.self"),
     GMSPEC_OTHER("gmspec.other"),
 
-    FEATURE_MOTD_RANDOM("random-motd"),
+    FEATURE_MOTD_RANDOM("enableRandomMOTD"),
 
 
     PING("basic.ping")

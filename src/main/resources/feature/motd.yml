@@ -3,7 +3,7 @@ isEnabled: true
 
 #IF true, will read from random -> MOTD, it'll pick one everytime a request is made
 #If false, will read from the MOTD message
-random-motd: true
+enableRandomMOTD: true
 
 #MOTD - Can leverage https://mctools.org/motd-creator
 #When pasting here, copy the 'For BungeeCord's config.yml file'
