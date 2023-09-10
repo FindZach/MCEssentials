@@ -83,7 +83,6 @@ public class Sit extends Feature {
             Directional directional = (Directional) blockData;
             BlockFace facing = directional.getFacing();
 
-            System.out.println("Block Direction: " + facing);
             switch (facing) {
                 case SOUTH:
                     // Adjust offsets for south-facing stairs
