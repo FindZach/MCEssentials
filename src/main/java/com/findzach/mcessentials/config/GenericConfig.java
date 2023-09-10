@@ -6,6 +6,8 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 
 public abstract class GenericConfig {
     protected final File configFile;
@@ -18,8 +20,12 @@ public abstract class GenericConfig {
         // Check if the config file exists, if not create it.
         if (!configFile.exists()) {
             try {
-                createConfigFile();
-                newlyCreated = true;
+                // First, try copying from resources.
+                if (!copyFromResources(directory, fileName)) {
+                    // If not in resources, then create a new file.
+                    createConfigFile();
+                    newlyCreated = true;
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -31,6 +37,17 @@ public abstract class GenericConfig {
     private void createConfigFile() throws IOException {
         configFile.getParentFile().mkdirs(); // Ensures the directory exists
         configFile.createNewFile();
+    }
+
+    private boolean copyFromResources(String directory, String fileName) throws IOException {
+        // Try to get the file from the resources.
+        InputStream in = MCEssentials.getInstance().getResource(directory + "/" + fileName + ".yml");
+        if (in == null) {
+            return false;
+        }
+
+        Files.copy(in, configFile.toPath());
+        return true;
     }
 
     public FileConfiguration getConfig() {
