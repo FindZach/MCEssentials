@@ -1,0 +1,59 @@
+# Command Responses
+basic:
+  ping:
+    - "&a&lPong! &2&lIl server è online e reattivo."
+    - "&6&lBing! &2&lTutti i sistemi sono operativi."
+  # Time Change Commands
+  time-change: "&6&lCambio di orario: &aHai impostato l'orario su %time%."
+
+# Gamemode Switching Command Messages
+gmc:
+  other:
+    - "&6&lCambio modalità: &aHai impostato la modalità Creativa per %selectedPlayer%."
+    - "&2&lInizia la creatività!"
+  self:
+    - "&a&lFlusso artistico attivato: &2Ora sei in modalità Creativa!"
+
+# Gamemode Survival
+gms:
+  other:
+    - "&6&lCambio modalità: &aHai impostato la modalità Sopravvivenza per %selectedPlayer%."
+  self:
+    - "&a&lIstinti di sopravvivenza attivati: &2Ora sei in modalità Sopravvivenza!"
+
+# Gamemode Adventure
+gma:
+  other:
+    - "&6&lCambio modalità: &aHai impostato la modalità Avventura per %selectedPlayer%."
+  self:
+    - "&a&lPronto per un'avventura? &2Ora sei in modalità Avventura!"
+
+# Gamemode Spectator
+gmspec:
+  other:
+    - "&6&lCambio modalità: &aHai impostato la modalità Spettatore per %selectedPlayer%."
+  self:
+    - "&a&lOsservatore invisibile: &2Ora sei in modalità Spettatore!"
+
+# Fly Commands
+fly:
+  self:
+    - "&6&lModalità di volo: &aLa tua modalità di volo è stata attivata."
+  other:
+    - "&6&lComandante del volo: &aHai impostato la modalità di volo per %selectedPlayer%."
+
+# Spawn Command Messages
+spawn:
+  begin-teleport:
+    - "&6&lTeletrasporto in corso... &aTeletrasporto alla zona di spawn tra %delay_in_seconds% secondi..."
+  complete-teleport:
+    - "&a&lBam! &2Teletrasportato alla zona di spawn."
+  set:
+    - "&a&lDecisione del comandante: &2Hai impostato il /spawn del server!"
+  cancelled:
+    - "Non puoi muoverti mentre cerchi di teletrasportarti!"
+
+# Error Messages
+error:
+  invalid-player:
+    - "&c&lAvviso! &4Giocatore non valido: %invalidPlayer%."

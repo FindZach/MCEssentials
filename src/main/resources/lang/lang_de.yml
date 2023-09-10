@@ -1,0 +1,59 @@
+# Command Responses
+basic:
+  ping:
+    - "&a&lPong! &2&lDer Server ist online und reagiert."
+    - "&6&lBing! &2&lAlle Systeme sind einsatzbereit."
+  # Time Change Commands
+  time-change: "&6&lZeitverschiebung: &aDu hast die Zeit auf %time% gesetzt."
+
+# Gamemode Switching Command Messages
+gmc:
+  other:
+    - "&6&lModus geändert: &aDu hast den Kreativmodus für %selectedPlayer% aktiviert."
+    - "&2&lLass deine Kreativität freien Lauf!"
+  self:
+    - "&a&lKünstlerischer Flair aktiviert: &2Du befindest dich jetzt im Kreativmodus!"
+
+# Gamemode Survival
+gms:
+  other:
+    - "&6&lModus geändert: &aDu hast den Überlebensmodus für %selectedPlayer% aktiviert."
+  self:
+    - "&a&lÜberlebensinstinkte aktiviert: &2Du befindest dich jetzt im Überlebensmodus!"
+
+# Gamemode Adventure
+gma:
+  other:
+    - "&6&lModus geändert: &aDu hast den Abenteuermodus für %selectedPlayer% aktiviert."
+  self:
+    - "&a&lBereit für ein Abenteuer? &2Du befindest dich jetzt im Abenteuermodus!"
+
+# Gamemode Spectator
+gmspec:
+  other:
+    - "&6&lModus geändert: &aDu hast den Zuschauermodus für %selectedPlayer% aktiviert."
+  self:
+    - "&a&lUnsichtbarer Beobachter: &2Du befindest dich jetzt im Zuschauermodus!"
+
+# Fly Commands
+fly:
+  self:
+    - "&6&lFlugmodus: &aDein Flugmodus wurde umgeschaltet."
+  other:
+    - "&6&lFlugkommandant: &aDu hast den Flugmodus für %selectedPlayer% aktiviert."
+
+# Spawn Command Messages
+spawn:
+  begin-teleport:
+    - "&6&lWarpen... &aTeleportiere zum Spawn in %delay_in_seconds% Sekunden..."
+  complete-teleport:
+    - "&a&lBam! &2Teleportiert zum Spawn-Punkt."
+  set:
+    - "&a&lEntscheidung des Kommandanten: &2Du hast den Server-Spawn gesetzt!"
+  cancelled:
+    - "Du kannst dich nicht bewegen, während du versuchst zu teleportieren!"
+
+# Error Messages
+error:
+  invalid-player:
+    - "&c&lWarnung! &4Ungültiger Spieler: %invalidPlayer%."

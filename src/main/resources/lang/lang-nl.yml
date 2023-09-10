@@ -1,0 +1,59 @@
+# Command Responses
+basic:
+  ping:
+    - "&a&lPong! &2&lDe server is online en reageert."
+    - "&6&lBing! &2&lAlle systemen zijn operationeel."
+  # Time Change Commands
+  time-change: "&6&lTijd veranderd: &aJe hebt de tijd ingesteld op %time%."
+
+# Gamemode Switching Command Messages
+gmc:
+  other:
+    - "&6&lModus veranderd: &aJe hebt de Creatieve modus ingesteld voor %selectedPlayer%."
+    - "&2&lLaten we creatief zijn!"
+  self:
+    - "&a&lArtistieke flair geactiveerd: &2Je bent nu in de Creatieve modus!"
+
+# Gamemode Survival
+gms:
+  other:
+    - "&6&lModus veranderd: &aJe hebt de Survival modus ingesteld voor %selectedPlayer%."
+  self:
+    - "&a&lOverlevingsinstinct geactiveerd: &2Je bent nu in de Survival modus!"
+
+# Gamemode Adventure
+gma:
+  other:
+    - "&6&lModus veranderd: &aJe hebt de Avontuurlijke modus ingesteld voor %selectedPlayer%."
+  self:
+    - "&a&lKlaar voor een avontuur? &2Je bent nu in de Avontuurlijke modus!"
+
+# Gamemode Spectator
+gmspec:
+  other:
+    - "&6&lModus veranderd: &aJe hebt de Spelersmodus ingesteld voor %selectedPlayer%."
+  self:
+    - "&a&lOnzichtbare toeschouwer: &2Je bent nu in de Spelersmodus!"
+
+# Fly Commands
+fly:
+  self:
+    - "&6&lVluchtmodus: &aJe vliegmodus is ingeschakeld."
+  other:
+    - "&6&lVluchtkapitein: &aJe hebt de vliegmodus ingesteld voor %selectedPlayer%."
+
+# Spawn Command Messages
+spawn:
+  begin-teleport:
+    - "&6&lWarping... &aTeleporteren naar de spawn over %delay_in_seconds% seconden..."
+  complete-teleport:
+    - "&a&lBam! &2Teleporteren naar de spawnlocatie."
+  set:
+    - "&a&lBeslissing van de commandant: &2Je hebt de server spawn ingesteld!"
+  cancelled:
+    - "Je kunt niet bewegen terwijl je probeert te teleporteren!"
+
+# Error Messages
+error:
+  invalid-player:
+    - "&c&lWaarschuwing! &4Ongeldige speler: %invalidPlayer%."
