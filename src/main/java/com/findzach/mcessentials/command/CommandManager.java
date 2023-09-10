@@ -1,6 +1,7 @@
 package com.findzach.mcessentials.command;
 
 import com.findzach.mcessentials.MCEssentials;
+import com.findzach.mcessentials.feature.FeatureManager;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.reflections.Reflections;
@@ -21,37 +22,12 @@ public class CommandManager {
     public CommandManager() {
         // Dynamically load classes with the CommandInfo annotation
         Reflections reflections = new Reflections("com.findzach.mcessentials.command.impl");
-
-        Reflections featureReflections = new Reflections("com.findzach.mcessentials.feature.impl");
+        Reflections featureReflection = new Reflections("com.findzach.mcessentials.feature.impl");
 
         Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(CommandInfo.class);
+        annotated.addAll(featureReflection.getTypesAnnotatedWith(CommandInfo.class));
 
-        Set<Class<?>> featureCommands = featureReflections.getTypesAnnotatedWith(CommandInfo.class);
         essentialsCommandExecutor = new EssentialsCommandExecutor(this);
-
-        for (Class<?> clazz: featureCommands) {
-            try {
-                CommandInfo info = clazz.getAnnotation(CommandInfo.class);
-
-                if (clazz.newInstance() instanceof Command) {
-                    Command commandInstance = (Command) clazz.newInstance();
-
-                    if (info == null || info.name().isBlank()) continue;
-
-                    registerCommand(info.name(), commandInstance);
-                    MCEssentials.getInstance().getCommand(info.name()).setExecutor(essentialsCommandExecutor);
-
-                } else {
-
-                    if (info.commandType() == CommandType.SUB_COMMAND) {
-                        System.out.println("Register name: " + info.name());
-                        registerSubCommand(info.name(), (SubCommand) clazz.newInstance());
-                    }
-                }
-            } catch (InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
 
         for (Class<?> clazz : annotated) {
             try {

@@ -3,7 +3,7 @@
 #Visit the /features folder to adjust each Feature MCEssentials has
 
 basic:
-  prefix: "&7&l[&3MCEssentials&7&l] "
+  prefix: "&7&l[&3&lMCE&b&lssentials&7&l] "
 
 #Current Values you can set:
 # lang_en ; lang_es ; lang_ru
@@ -31,10 +31,3 @@ Spawn-Teleport-Delayed: true
 
 #Do you want MCEssentials to route players who type /spawn to this location?
 #Can set this by standing and typing /mce setspawn
-spawn:
-  world: world
-  x: 0
-  y: 0
-  z: 0
-  pitch: 0
-  yaw: 0

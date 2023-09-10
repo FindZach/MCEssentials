@@ -1,6 +1,5 @@
 package com.findzach.mcessentials.feature.impl.motd;
 
-import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.config.ConfigKey;
 import com.findzach.mcessentials.feature.Feature;
 import com.findzach.mcessentials.feature.FeatureType;

@@ -9,6 +9,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author Zach S <zach@findzach.com>
  * @since 9/9/2023
@@ -28,7 +31,12 @@ public class FlyOtherCommand implements SubCommand {
         }
 
         selectedPlayer.setAllowFlight(!selectedPlayer.getAllowFlight());
-        Messager.send(sender, MCEssentials.getInstance().getMessage("fly.other").replace("%selectedPlayer%", selectedPlayer.getDisplayName()));
+        List<String> configMessages = MCEssentials.getInstance().getMessages("fly.other");
+        List<String> updatedMessages = configMessages.stream()
+                .map(s -> s.replace("%selectedPlayer%", selectedPlayer.getDisplayName()))
+                .collect(Collectors.toList());
+
+        Messager.send(sender, updatedMessages);
     }
 
 }

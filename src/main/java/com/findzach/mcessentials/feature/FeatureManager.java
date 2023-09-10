@@ -67,6 +67,10 @@ public class FeatureManager {
         }
     }
 
+    public Feature getFeature(FeatureType featureType) {
+        return featureMap.get(featureType);
+    }
+
     public void addFeature(FeatureType featureName, Feature feature) {
         featureMap.put(featureName, feature);
     }

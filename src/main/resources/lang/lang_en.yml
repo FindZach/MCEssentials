@@ -1,58 +1,57 @@
-#Command Responses
-#You can add multiple lines to all of these
+# Command Responses
 basic:
   ping:
-    - "&a&lPong!"
-    - "&5&lBing!"
+    - "&a&lPong! &2&lServer is online and responsive."
+    - "&6&lBing! &2&lAll systems operational."
+  # Time Change Commands
+  time-change: "&6&lTime Shift: &aYou've set the time to %time%."
 
-#Gamemode Switching Command Messages
+# Gamemode Switching Command Messages
 gmc:
   other:
-    - "You have set creative mode for %selectedPlayer%"
-    - "&aTake two"
+    - "&6&lMode Shift: &aYou set Creative Mode for %selectedPlayer%."
+    - "&2&lLet the creativity begin!"
   self:
-    - "You're now in Creative Mode!"
+    - "&a&lArtistic Flare Activated: &2You're now in Creative Mode!"
 
-#Gamemode Survival
+# Gamemode Survival
 gms:
   other:
-    - "You have set creative mode for %selectedPlayer%"
+    - "&6&lMode Shift: &aYou set Survival Mode for %selectedPlayer%."
   self:
-    - "&eYou're now in Survival mode!"
+    - "&a&lSurvival Instincts Engaged: &2You're now in Survival Mode!"
 
-#Gamemode Adventure
+# Gamemode Adventure
 gma:
   other:
-    - "&eYou have set Adventure mode for %selectedPlayer%"
+    - "&6&lMode Shift: &aYou set Adventure Mode for %selectedPlayer%."
   self:
-    - "&eYou're now in Adventure mode!"
+    - "&a&lReady for an Adventure? &2You're now in Adventure Mode!"
 
-#Gamemode Spectator
+# Gamemode Spectator
 gmspec:
   other:
-    - "You have set Spectator mode for %selectedPlayer%"
+    - "&6&lMode Shift: &aYou set Spectator Mode for %selectedPlayer%."
   self:
-    - "&eYou're now in spectator mode!"
+    - "&a&lInvisible Observer: &2You're now in Spectator Mode!"
 
-#Time Change Commands
-time-change: "&cYou've set the time to %time%"
-
+# Fly Commands
 fly:
   self:
-    - "&cYour fly mode has been toggled"
+    - "&6&lFlight Mode: &aYour fly mode has been toggled."
   other:
-    - "&6You set fly for %selectedPlayer%"
+    - "&6&lFlight Commander: &aYou set fly mode for %selectedPlayer%."
 
-#Spawn Command Messages
+# Spawn Command Messages
 spawn:
   begin-teleport:
-    - "&e&lTeleporting to Spawn in %delay_in_seconds% seconds..."
+    - "&6&lWarping... &aTeleporting to Spawn in %delay_in_seconds% seconds..."
   complete-teleport:
-    - "&a&lTeleported to spawn..."
+    - "&a&lBam! &2Teleported to the spawn point."
   set:
-    - "&a&lYou have set the servers /spawn!"
+    - "&a&lCommander's Decision: &2You have set the server's /spawn!"
 
-#Error Messages
+# Error Messages
 error:
   invalid-player:
-    - "&cInvalid Player: %invalidName%"
+    - "&c&lAlert! &4Invalid Player: %invalidName%."

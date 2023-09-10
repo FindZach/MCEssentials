@@ -31,7 +31,7 @@ public class TimeUtility {
         String response = "Unable to set the time for the selected world";
         if (world != null) {
             world.setTime(time.getTimeValue());
-            response = MCEssentials.getInstance().getMessage("time-change") + time.name();
+            response = MCEssentials.getInstance().getMessage("basic.time-change").replaceAll("%time%", time.name().toLowerCase());
         }
         return response;
     }

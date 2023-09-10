@@ -4,11 +4,13 @@ import com.findzach.mcessentials.command.CommandManager;
 import com.findzach.mcessentials.config.impl.lang.LanguageManager;
 import com.findzach.mcessentials.feature.FeatureManager;
 import com.findzach.mcessentials.feature.impl.vanish.VanishManager;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 
+@Getter
 public final class MCEssentials extends JavaPlugin {
 
     private static MCEssentials instance;
@@ -30,9 +32,10 @@ public final class MCEssentials extends JavaPlugin {
 
         String lang = getConfig().getString("language", "lang_en");
 
+        featureManager = new FeatureManager();
+
         languageManager = new LanguageManager(lang);
         commandManager = new CommandManager();
-        featureManager = new FeatureManager();
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             PLACE_HOLDER_API_ACTIVE = true;

@@ -1,0 +1,20 @@
+###
+###     MCEssentials Spawn Configuration
+###
+### Do you want MCEssentials to route players who type /spawn
+isEnabled: true
+
+### Spawn Details
+spawn:
+  cancel-on-movement: true
+  #Delay in Seconds
+  spawn-delay: 5
+  #The Location of the Spawn Point
+  #Set this by standing ingame and typing /setspawn
+  location:
+    world: world
+    x: 0
+    y: 0
+    z: 0
+    pitch: 0
+    yaw: 0
