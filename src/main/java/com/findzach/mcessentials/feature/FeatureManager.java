@@ -7,7 +7,6 @@ import com.findzach.mcessentials.feature.impl.misc.Sit;
 import com.findzach.mcessentials.feature.impl.motd.MOTD;
 import com.findzach.mcessentials.feature.impl.spawn.Spawn;
 import com.findzach.mcessentials.feature.impl.votifier.VotifierAddon;
-import com.findzach.mcessentials.util.Messager;
 import org.bukkit.ChatColor;
 
 import java.util.HashMap;
@@ -28,6 +27,7 @@ public class FeatureManager {
         for (FeatureType type: FeatureType.values()) {
 
             Feature foundFeature = null;
+            if (!type.isActive()) continue;
 
             switch (type) {
                 case SIT:
@@ -57,9 +57,6 @@ public class FeatureManager {
 
             if (foundFeature != null && foundFeature.isEnabled()) {
                 featureMap.put(type, foundFeature);
-
-                //MCEssentials.getInstance().getLogger().info("Feature Enabled: " + foundFeature.getFeatureName());
-                Messager.broadcastMessage("Feature Enabled: " + foundFeature.getFeatureName());
             } else {
                 if (foundFeature == null) {
                     MCEssentials.getInstance().getLogger().info(ChatColor.translateAlternateColorCodes('&', "&c " + type.getName() + " has no connection!"));

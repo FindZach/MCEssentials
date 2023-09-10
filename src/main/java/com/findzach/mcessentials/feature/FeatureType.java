@@ -5,21 +5,28 @@ package com.findzach.mcessentials.feature;
  * @since 9/10/2023
  */
 public enum FeatureType {
-    ECONOMY("Simple Economy", "economy"),
-    FIRST_JOIN("First Join", "firstjoin"),
-    SIT("Sit on Blocks", "sit"),
-    MOTD("Customizable MOTD Display", "motd"),
-    SPAWN("Spawn Management", "spawn"),
-    TELEPORT("Teleportation System", "teleport"),
-    UPDATER("Updater Service", "updater"),
-    VOTE_REWARDS("Simple Vote Rewards System", "vote_rewards");
+    ECONOMY("Simple Economy", "economy", false),
+    FIRST_JOIN("First Join", "firstjoin", false),
+    SIT("Sit on Blocks", "sit", true),
+    MOTD("Customizable MOTD Display", "motd", true),
+    SPAWN("Spawn Management", "spawn", true),
+    TELEPORT("Teleportation System", "teleport", false),
+    UPDATER("Updater Service", "updater", false),
+    VOTE_REWARDS("Simple Vote Rewards System", "vote_rewards", true);
 
     private String name;
     private String configName;
 
-    FeatureType(String name, String configName) {
+    private boolean isActive;
+
+    FeatureType(String name, String configName, boolean isActive) {
         this.name = name;
         this.configName = configName;
+        this.isActive = isActive;
+    }
+
+    public boolean isActive() {
+        return isActive;
     }
 
     public String getName() {
