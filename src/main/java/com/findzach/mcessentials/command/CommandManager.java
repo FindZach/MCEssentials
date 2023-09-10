@@ -38,9 +38,11 @@ public class CommandManager {
 
                 if (info == null || info.name().isBlank()) continue;
 
+
+                    System.out.println("Command: " + info.name());
+
                 registerCommand(info.name(), commandInstance);
                 MCEssentials.getInstance().getCommand(info.name()).setExecutor(essentialsCommandExecutor);
-
                 } else {
 
                     if (info.commandType() == CommandType.SUB_COMMAND) {

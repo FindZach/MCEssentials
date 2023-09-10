@@ -51,7 +51,7 @@ public class Sit extends Feature {
             // Check if the clicked block is a stair
             Material clickedType = event.getClickedBlock().getBlockData().getMaterial();
             if (isStair(clickedType)) {
-                Location sitLocation = event.getClickedBlock().getLocation().add(0.5, -0.5, 0.5); // Adjust these numbers as needed
+                Location sitLocation = event.getClickedBlock().getLocation().add(0.5, -0.4, 0.5); // Adjust these numbers as needed
                 ArmorStand armorStand = player.getWorld().spawn(sitLocation, ArmorStand.class);
 
                 armorStand.setGravity(false);
@@ -71,13 +71,12 @@ public class Sit extends Feature {
         approvedStairList = approvedStairList.isEmpty() ? getFeatureConfig().getStringList("sitting.objects") : approvedStairList;
 
         for (String materialRaw : approvedStairList) {
-            System.out.println("Material clicked: " + material);
             Material potentialMaterial = Material.matchMaterial(materialRaw.toUpperCase());
-            System.out.println("Material Raw: " + materialRaw.toUpperCase());
             if (potentialMaterial != null) {
                 approvedMaterialList.add(potentialMaterial);
             }
         }
         return approvedMaterialList.contains(material);
     }
+
 }

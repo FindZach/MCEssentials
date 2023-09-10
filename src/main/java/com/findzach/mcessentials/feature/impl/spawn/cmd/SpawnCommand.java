@@ -45,7 +45,8 @@ public class SpawnCommand implements PlayerCommand {
         Location requestLocation = player.getLocation().clone();
 
         Bukkit.getScheduler().runTaskLater(mcEssentials, () -> {
-            if (requestLocation.distance(player.getLocation()) <= 1) {
+            boolean cancelOnMovement = spawnFeature.getFeatureConfig().getBoolean("spawn.cancel-on-movement");
+            if (requestLocation.distance(player.getLocation()) <= 1 || !cancelOnMovement) {
                 player.teleport(spawnFeature.getSpawn());
                 Messager.send(player, mcEssentials.getMessages("spawn.complete-teleport"));
             } else {
