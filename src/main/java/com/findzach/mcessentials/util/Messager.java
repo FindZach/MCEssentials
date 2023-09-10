@@ -69,6 +69,6 @@ public class Messager {
     }
 
     public static void broadcastMessage(String message) {
-        Bukkit.broadcastMessage(MCEssentials.getInstance().getConfig().getString("basic.prefix") + "" + ChatColor.translateAlternateColorCodes('&', message));
+        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', MCEssentials.getInstance().getConfig().getString("basic.prefix") + "" + ChatColor.translateAlternateColorCodes('&', message)));
     }
 }
