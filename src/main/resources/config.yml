@@ -1,33 +1,10 @@
-#Please leave a review or message me and leave suggestions, I fully intend to develop this plugin
-#Please visit the /lang folder to adjust the messages
-#Visit the /features folder to adjust each Feature MCEssentials has
-
+###
+###     MCEssentials Main Configuration
+###
+### Please visit the 'lang' and 'feature' folders for more configurations
 basic:
   prefix: "&7&l[&3&lMCE&b&lssentials&7&l] "
 
-#Current Values you can set:
-# lang_en ; lang_es ; lang_ru
+### Current Values you can set:
+## CURRENT LANGUAGES SUPPORTED : lang_en | lang_es | lang_ru
 language: "lang_en" # default language
-
-#Can set this by standing and typing /mce setfirstspawn
-firstTimeSpawn:
-  handleFirstSpawn: false
-  x: 1
-  y: 1
-  z: 1
-
-#Teleport Delay in Seconds, only if enabled
-#Put 0 for no delay
-Teleport-Delay: 5
-
-#Do we want the user to be able to move during the Teleport delay
-Teleport-Enforce-NoMovement: false
-
-#Set true if you want MCEssentials to handle the /spawn location, and delay
-Spawn-Enabled: false
-
-#If true, Teleport-Delay will be enforced, If false, instant Teleport to /spawn
-Spawn-Teleport-Delayed: true
-
-#Do you want MCEssentials to route players who type /spawn to this location?
-#Can set this by standing and typing /mce setspawn

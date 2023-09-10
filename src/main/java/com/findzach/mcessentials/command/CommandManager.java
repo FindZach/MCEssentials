@@ -1,8 +1,6 @@
 package com.findzach.mcessentials.command;
 
 import com.findzach.mcessentials.MCEssentials;
-import com.findzach.mcessentials.feature.FeatureManager;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.reflections.Reflections;
 
@@ -30,23 +28,18 @@ public class CommandManager {
         essentialsCommandExecutor = new EssentialsCommandExecutor(this);
 
         for (Class<?> clazz : annotated) {
-            try {
-                CommandInfo info = clazz.getAnnotation(CommandInfo.class);
+                try {
+                    CommandInfo info = clazz.getAnnotation(CommandInfo.class);
 
-                if (clazz.newInstance() instanceof Command) {
-                Command commandInstance = (Command) clazz.newInstance();
+                    if (clazz.newInstance() instanceof Command) {
+                    Command commandInstance = (Command) clazz.newInstance();
 
-                if (info == null || info.name().isBlank()) continue;
+                    if (info == null || info.name().isBlank()) continue;
 
-
-                    System.out.println("Command: " + info.name());
-
-                registerCommand(info.name(), commandInstance);
-                MCEssentials.getInstance().getCommand(info.name()).setExecutor(essentialsCommandExecutor);
+                    registerCommand(info.name(), commandInstance);
+                    MCEssentials.getInstance().getCommand(info.name()).setExecutor(essentialsCommandExecutor);
                 } else {
-
                     if (info.commandType() == CommandType.SUB_COMMAND) {
-                        System.out.println("Register name: " + info.name());
                         registerSubCommand(info.name(), (SubCommand) clazz.newInstance());
                     }
                 }
