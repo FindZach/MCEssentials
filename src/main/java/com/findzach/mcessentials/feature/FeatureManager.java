@@ -1,9 +1,13 @@
 package com.findzach.mcessentials.feature;
 
+import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.feature.impl.economy.EconomyManager;
+import com.findzach.mcessentials.feature.impl.firstjoin.FirstJoinSetup;
 import com.findzach.mcessentials.feature.impl.misc.Sit;
 import com.findzach.mcessentials.feature.impl.motd.MOTD;
+import com.findzach.mcessentials.feature.impl.spawn.Spawn;
 import com.findzach.mcessentials.feature.impl.votifier.VotifierAddon;
+import org.bukkit.ChatColor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,20 +17,48 @@ import java.util.Map;
  * @since 9/9/2023
  */
 public class FeatureManager {
-    private Map<String, Feature> featureMap = new HashMap<>();
+    private Map<FeatureType, Feature> featureMap = new HashMap<>();
 
     public FeatureManager() {
         initFeatures();
     }
 
     private void initFeatures() {
-        featureMap.put("Vote-Rewards", new VotifierAddon());
-        featureMap.put("Sit-On-Blocks", new Sit());
-        featureMap.put("MOTD", new MOTD());
-        featureMap.put("Economy", new EconomyManager());
+        for (FeatureType type: FeatureType.values()) {
+
+            Feature foundFeature = null;
+
+            switch (type) {
+                case SIT:
+                    foundFeature = new Sit();
+                    break;
+
+                case MOTD:
+                    foundFeature = new MOTD();
+                    break;
+
+                case FIRST_JOIN:
+                    foundFeature = new FirstJoinSetup();
+                    break;
+
+                case SPAWN:
+                    foundFeature = new Spawn();
+                    break;
+
+                case ECONOMY:
+                    foundFeature = new EconomyManager();
+                    break;
+            }
+
+            if (foundFeature != null && foundFeature.isEnabled()) {
+                featureMap.put(type, foundFeature);
+            } else {
+                MCEssentials.getInstance().getLogger().info(ChatColor.translateAlternateColorCodes('&', "&c " + foundFeature.getFeatureName() + " is not valid!"));
+            }
+        }
     }
 
-    public void addFeature(String featureName, Feature feature) {
+    public void addFeature(FeatureType featureName, Feature feature) {
         featureMap.put(featureName, feature);
     }
 

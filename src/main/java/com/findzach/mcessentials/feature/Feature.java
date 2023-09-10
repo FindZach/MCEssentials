@@ -54,11 +54,18 @@ public abstract class Feature implements Listener {
         this.isActive = active;
     }
 
+    public abstract FeatureType getFeatureType();
+
     protected void enableFeature() {
         setActive(true);
     }
     protected void disableFeature() {
         setActive(false);
     }
-    protected abstract String getFeatureName();
+    public String getFeatureName() {
+        return getFeatureType().getName();
+    }
+    public String getFeatureConfigName() {
+        return getFeatureType().getConfigName();
+    }
 }

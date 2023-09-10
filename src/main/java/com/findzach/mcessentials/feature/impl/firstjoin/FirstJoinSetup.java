@@ -1,6 +1,7 @@
 package com.findzach.mcessentials.feature.impl.firstjoin;
 
 import com.findzach.mcessentials.feature.Feature;
+import com.findzach.mcessentials.feature.FeatureType;
 
 /**
  * @author Zach S <zach@findzach.com>
@@ -13,7 +14,8 @@ public class FirstJoinSetup extends Feature {
     }
 
     @Override
-    protected String getFeatureName() {
-        return null;
+    public FeatureType getFeatureType() {
+        return FeatureType.FIRST_JOIN;
     }
+
 }

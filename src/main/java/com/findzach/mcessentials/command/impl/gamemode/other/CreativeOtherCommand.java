@@ -6,8 +6,11 @@ import com.findzach.mcessentials.command.CommandType;
 import com.findzach.mcessentials.command.SubCommand;
 import com.findzach.mcessentials.util.Messager;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.List;
 
 /**
  * Handles the sub-command to apply creative mode to a selected player.
@@ -38,12 +41,21 @@ public class CreativeOtherCommand implements SubCommand {
 
         // Check if the player is valid.
         if (selectedPlayer == null) {
-            Messager.send(sender, MCEssentials.getInstance().getMessages("error.invalid-player"));
+            List<String> messages = MCEssentials.getInstance().getMessages("error.invalid-player");
+            for (String error: messages) {
+                error.replaceAll("%invalidPlayer%", args[0]);
+            }
+            Messager.send(sender, messages);
             return;
         }
 
-        // Toggle flight for the selected player.
-        selectedPlayer.setAllowFlight(!selectedPlayer.getAllowFlight());
-        Messager.send(sender, MCEssentials.getInstance().getMessage("fly-other").replace("%selectedName%", selectedPlayer.getDisplayName()));
+        selectedPlayer.setGameMode(GameMode.CREATIVE);
+        List<String> gmcOther = MCEssentials.getInstance().getMessages("gmc.other");
+
+        for (String gmc: gmcOther) {
+            gmc.replaceAll("%selectedName%", selectedPlayer.getDisplayName());
+        }
+
+        Messager.send(sender, gmcOther);
     }
 }

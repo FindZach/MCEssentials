@@ -21,8 +21,37 @@ public class CommandManager {
     public CommandManager() {
         // Dynamically load classes with the CommandInfo annotation
         Reflections reflections = new Reflections("com.findzach.mcessentials.command.impl");
+
+        Reflections featureReflections = new Reflections("com.findzach.mcessentials.feature.impl");
+
         Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(CommandInfo.class);
+
+        Set<Class<?>> featureCommands = featureReflections.getTypesAnnotatedWith(CommandInfo.class);
         essentialsCommandExecutor = new EssentialsCommandExecutor(this);
+
+        for (Class<?> clazz: featureCommands) {
+            try {
+                CommandInfo info = clazz.getAnnotation(CommandInfo.class);
+
+                if (clazz.newInstance() instanceof Command) {
+                    Command commandInstance = (Command) clazz.newInstance();
+
+                    if (info == null || info.name().isBlank()) continue;
+
+                    registerCommand(info.name(), commandInstance);
+                    MCEssentials.getInstance().getCommand(info.name()).setExecutor(essentialsCommandExecutor);
+
+                } else {
+
+                    if (info.commandType() == CommandType.SUB_COMMAND) {
+                        System.out.println("Register name: " + info.name());
+                        registerSubCommand(info.name(), (SubCommand) clazz.newInstance());
+                    }
+                }
+            } catch (InstantiationException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
 
         for (Class<?> clazz : annotated) {
             try {
@@ -54,6 +83,10 @@ public class CommandManager {
         if(command.isPresent() && sender.hasPermission(command.get().getPermission())) {
             command.get().execute(sender, args);
         }
+    }
+
+    private void registerFeatureCommands() {
+
     }
 
     private void registerCommand(String name, Command command) {

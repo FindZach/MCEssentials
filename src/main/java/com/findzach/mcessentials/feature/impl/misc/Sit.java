@@ -1,6 +1,7 @@
 package com.findzach.mcessentials.feature.impl.misc;
 
 import com.findzach.mcessentials.feature.Feature;
+import com.findzach.mcessentials.feature.FeatureType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
@@ -27,8 +28,8 @@ public class Sit extends Feature {
     }
 
     @Override
-    protected String getFeatureName() {
-        return "Sit-on-Block";
+    public FeatureType getFeatureType() {
+        return FeatureType.SIT;
     }
 
     @EventHandler

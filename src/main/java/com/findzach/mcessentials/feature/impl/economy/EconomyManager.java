@@ -1,6 +1,7 @@
 package com.findzach.mcessentials.feature.impl.economy;
 
 import com.findzach.mcessentials.feature.Feature;
+import com.findzach.mcessentials.feature.FeatureType;
 
 /**
  * @author Zach S <zach@findzach.com>
@@ -8,12 +9,12 @@ import com.findzach.mcessentials.feature.Feature;
  */
 public class EconomyManager extends Feature {
     @Override
-    protected void setConfigDefaults() {
-
+    protected void setConfigDefaults() {//File Generated from Resources
     }
 
     @Override
-    protected String getFeatureName() {
-        return "Economy";
+    public FeatureType getFeatureType() {
+        return FeatureType.ECONOMY;
     }
+
 }

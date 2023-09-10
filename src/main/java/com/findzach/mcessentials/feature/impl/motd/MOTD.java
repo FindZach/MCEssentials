@@ -1,6 +1,7 @@
 package com.findzach.mcessentials.feature.impl.motd;
 
 import com.findzach.mcessentials.feature.Feature;
+import com.findzach.mcessentials.feature.FeatureType;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.server.ServerListPingEvent;
@@ -12,16 +13,13 @@ import org.bukkit.event.server.ServerListPingEvent;
 public class MOTD extends Feature {
 
     private boolean isEnabled;
-    @Override
-    protected String getFeatureName() {
-        return "MOTD";
-    }
 
     @Override
-    protected void setConfigDefaults() {
-        String MOTD = "&a&lEssentialsMC MOTD";
+    protected void setConfigDefaults() {}
 
-        getFeatureConfig().addDefault("MOTD", MOTD);
+    @Override
+    public FeatureType getFeatureType() {
+        return FeatureType.MOTD;
     }
 
     @EventHandler

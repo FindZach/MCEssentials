@@ -1,6 +1,7 @@
 package com.findzach.mcessentials.feature.impl.votifier;
 
 import com.findzach.mcessentials.feature.Feature;
+import com.findzach.mcessentials.feature.FeatureType;
 import com.vexsoftware.votifier.model.VotifierEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -27,8 +28,8 @@ public class VotifierAddon extends Feature {
     }
 
     @Override
-    protected String getFeatureName() {
-        return "Vote-Rewards";
+    public FeatureType getFeatureType() {
+        return FeatureType.VOTE_REWARDS;
     }
 
     @Override
