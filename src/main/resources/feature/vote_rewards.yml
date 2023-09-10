@@ -8,8 +8,7 @@ isEnabled: true
 rewards:
   message:
     - "%playerName% has successfully voted and earned a mystery box!"
-    - "You can vote for the server at https://www.vote.complexitymc.com"
+    - "You can vote for the server at vote.com"
   commands:
     - give %player% diamond 5
     - eco give %player% 100
-    - say %player% has voted!
