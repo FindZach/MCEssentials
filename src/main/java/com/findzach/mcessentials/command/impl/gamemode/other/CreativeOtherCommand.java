@@ -44,10 +44,11 @@ public class CreativeOtherCommand implements SubCommand {
         // Check if the player is valid.
         if (selectedPlayer == null) {
             List<String> messages = MCEssentials.getInstance().getMessages(ConfigKey.ERROR_MSG_INVALID_USER.getKey());
+            List<String> updated = new ArrayList<>();
             for (String error: messages) {
-                error.replaceAll("%invalidPlayer%", args[0]);
+                updated.add(error.replaceAll("%invalidPlayer%", args[0]));
             }
-            Messager.send(sender, messages);
+            Messager.send(sender, updated);
             return;
         }
 
