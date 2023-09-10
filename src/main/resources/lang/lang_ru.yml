@@ -55,4 +55,4 @@ spawn:
 # Error Messages
 error:
   invalid-player:
-    - "&c&lПредупреждение! &4Неверный Игрок: %invalidName%."
+    - "&c&lПредупреждение! &4Неверный Игрок: %%invalidPlayer%."

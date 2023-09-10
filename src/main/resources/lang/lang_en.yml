@@ -56,4 +56,4 @@ spawn:
 # Error Messages
 error:
   invalid-player:
-    - "&c&lAlert! &4Invalid Player: %invalidName%."
+    - "&c&lAlert! &4Invalid Player: %invalidPlayer%."

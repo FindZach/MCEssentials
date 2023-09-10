@@ -55,4 +55,4 @@ spawn:
 # Error Messages
 error:
   invalid-player:
-    - "&c&l¡Alerta! &4Jugador Inválido: %invalidName%."
+    - "&c&l¡Alerta! &4Jugador Inválido: %%invalidPlayer%."
