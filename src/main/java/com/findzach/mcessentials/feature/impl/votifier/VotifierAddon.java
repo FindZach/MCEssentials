@@ -2,6 +2,7 @@ package com.findzach.mcessentials.feature.impl.votifier;
 
 import com.findzach.mcessentials.feature.Feature;
 import com.findzach.mcessentials.feature.FeatureType;
+import com.findzach.mcessentials.util.Messager;
 import com.vexsoftware.votifier.model.VotifierEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -59,6 +60,12 @@ public class VotifierAddon extends Feature {
             for (String s : consoleCommands) {
                 String updatedName = s.replace("%player%", event.getVote().getUsername());
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), updatedName);
+            }
+
+            for (String broadcast: getFeatureConfig().getStringList("rewards.message")) {
+                String updatedBroadcast = broadcast.replaceAll("%playerName%", event.getVote().getUsername());
+
+                Messager.broadcastMessage(updatedBroadcast);
             }
         }
     }

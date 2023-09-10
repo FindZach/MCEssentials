@@ -8,7 +8,6 @@ import com.findzach.mcessentials.feature.impl.motd.MOTD;
 import com.findzach.mcessentials.feature.impl.spawn.Spawn;
 import com.findzach.mcessentials.feature.impl.votifier.VotifierAddon;
 import com.findzach.mcessentials.util.Messager;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import java.util.HashMap;
@@ -49,6 +48,10 @@ public class FeatureManager {
 
                 case ECONOMY:
                     foundFeature = new EconomyManager();
+                    break;
+
+                case VOTE_REWARDS:
+                    foundFeature = new VotifierAddon();
                     break;
             }
 

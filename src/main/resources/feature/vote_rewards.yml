@@ -1,0 +1,15 @@
+###
+###     MCEssentials Vote Rewards Configuration
+###
+### Do you want to perform actions when a user votes?
+isEnabled: true
+
+### These will be performed in console
+rewards:
+  message:
+    - "%playerName% has successfully voted and earned a mystery box!"
+    - "You can vote for the server at https://www.vote.complexitymc.com"
+  commands:
+    - give %player% diamond 5
+    - eco give %player% 100
+    - say %player% has voted!
