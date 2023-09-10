@@ -2,6 +2,7 @@ package com.findzach.mcessentials.util;
 
 import com.findzach.mcessentials.MCEssentials;
 import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -52,7 +53,7 @@ public class Messager {
      * @param msg    The message to send.
      */
     public static void send(CommandSender sender, String msg) {
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', MCEssentials.getInstance().getMessage("message_prefix") + msg));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', MCEssentials.getInstance().getConfig().getString("basic.prefix") + msg));
     }
 
     /**
@@ -65,5 +66,9 @@ public class Messager {
         for (String s: messages) {
             send(sender, s);
         }
+    }
+
+    public static void broadcastMessage(String message) {
+        Bukkit.broadcastMessage(MCEssentials.getInstance().getConfig().getString("basic.prefix") + "" + ChatColor.translateAlternateColorCodes('&', message));
     }
 }

@@ -1,4 +1,4 @@
-package com.findzach.mcessentials.config.lang;
+package com.findzach.mcessentials.config.impl.lang;
 
 import com.findzach.mcessentials.MCEssentials;
 import org.bukkit.configuration.file.FileConfiguration;

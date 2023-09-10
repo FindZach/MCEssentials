@@ -41,8 +41,10 @@ public abstract class GenericConfig {
 
     private boolean copyFromResources(String directory, String fileName) throws IOException {
         // Try to get the file from the resources.
+        System.out.println("Directory: " + directory + " fileName: " + fileName);
         InputStream in = MCEssentials.getInstance().getResource(directory + "/" + fileName + ".yml");
         if (in == null) {
+            System.out.println("There is no file input at: " + (directory + "/" + fileName + ".yml"));
             return false;
         }
 

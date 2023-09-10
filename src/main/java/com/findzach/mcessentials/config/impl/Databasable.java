@@ -1,4 +1,4 @@
-package com.findzach.mcessentials.config.feature.impl;
+package com.findzach.mcessentials.config.impl;
 
 /**
  * @author Zach S <zach@findzach.com>

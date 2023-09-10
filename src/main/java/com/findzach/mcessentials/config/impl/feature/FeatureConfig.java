@@ -1,4 +1,4 @@
-package com.findzach.mcessentials.config.feature;
+package com.findzach.mcessentials.config.impl.feature;
 
 import com.findzach.mcessentials.config.GenericConfig;
 

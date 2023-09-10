@@ -16,6 +16,6 @@ public class PingCommand implements Command {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        Messager.send(sender, MCEssentials.getInstance().getMessage("ping"));
+        Messager.send(sender, MCEssentials.getInstance().getMessages("basic.ping"));
     }
 }

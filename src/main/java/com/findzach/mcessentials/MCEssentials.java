@@ -1,7 +1,7 @@
 package com.findzach.mcessentials;
 
 import com.findzach.mcessentials.command.CommandManager;
-import com.findzach.mcessentials.config.lang.LanguageManager;
+import com.findzach.mcessentials.config.impl.lang.LanguageManager;
 import com.findzach.mcessentials.feature.FeatureManager;
 import com.findzach.mcessentials.feature.impl.vanish.VanishManager;
 import org.bukkit.Bukkit;

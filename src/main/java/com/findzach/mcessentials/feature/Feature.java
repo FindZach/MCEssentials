@@ -1,7 +1,7 @@
 package com.findzach.mcessentials.feature;
 
 import com.findzach.mcessentials.MCEssentials;
-import com.findzach.mcessentials.config.feature.FeatureConfig;
+import com.findzach.mcessentials.config.impl.feature.FeatureConfig;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 
@@ -16,7 +16,7 @@ public abstract class Feature implements Listener {
     private boolean isActive = true;
 
     public Feature() {
-        config = new FeatureConfig(getFeatureName());
+        config = new FeatureConfig(getFeatureType().getConfigName());
         if (config.isNewlyCreated()) { // Check if this config was just created
             addIsEnabledConfig();
             setConfigDefaults(); // Feature-specific defaults
