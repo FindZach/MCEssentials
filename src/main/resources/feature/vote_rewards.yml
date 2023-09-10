@@ -4,11 +4,13 @@
 ### Do you want to perform actions when a user votes?
 isEnabled: true
 
-### These will be performed in console
+### Rewards for voting Configuration
 rewards:
+  ### These will be broadcasted to the server
   message:
     - "%playerName% has successfully voted and earned a mystery box!"
     - "You can vote for the server at vote.com"
+  ### These will be performed in console
   commands:
     - give %player% diamond 5
     - eco give %player% 100

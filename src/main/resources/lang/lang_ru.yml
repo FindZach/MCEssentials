@@ -1,17 +1,58 @@
-#General Settings, Message Notifications Prefix
-message_prefix: "&a[&3MCEssentials&a]&c&l "
+# Command Responses
+basic:
+  ping:
+    - "&a&lПонг! &2&lСервер в сети и отвечает."
+    - "&6&lБинг! &2&lВсе системы работают."
+  time-change: "&6&lИзменение Времени: &aВы установили время на %time%."
 
-#Command Responses
-ping: "&cПонг!"
-gmc: "&cТеперь вы в режиме творчества!"
-gms: "&cТеперь вы в режиме выживания!"
-gma: "&cТеперь вы в режиме приключений!"
-gmspec: "&cТеперь вы в режиме зрителя!"
-time-change: "&cВы установили время на "
-fly: "&cРежим полета был переключен"
-fly-other: "&6Вы установили режим полета для [selectedName]"
-heal: "&6Вы были исцелены!"
-feed: "&6Вы были накормлены!"
+# Gamemode Switching Command Messages
+gmc:
+  other:
+    - "&6&lСмена Режима: &aВы установили Режим Творчества для %selectedPlayer%."
+    - "&2&lПусть начнется творчество!"
+  self:
+    - "&a&lАктивирован Творческий Пыл: &2Теперь вы в Режиме Творчества!"
 
-#Error Messages
-invalid-player: "&cНеверный игрок: [InvalidName]"
+# Gamemode Survival
+gms:
+  other:
+    - "&6&lСмена Режима: &aВы установили Режим Выживания для %selectedPlayer%."
+  self:
+    - "&a&lАктивированы Инстинкты Выживания: &2Теперь вы в Режиме Выживания!"
+
+# Gamemode Adventure
+gma:
+  other:
+    - "&6&lСмена Режима: &aВы установили Режим Приключения для %selectedPlayer%."
+  self:
+    - "&a&lГотовы к Приключению? &2Теперь вы в Режиме Приключения!"
+
+# Gamemode Spectator
+gmspec:
+  other:
+    - "&6&lСмена Режима: &aВы установили Режим Наблюдателя для %selectedPlayer%."
+  self:
+    - "&a&lНевидимый Наблюдатель: &2Теперь вы в Режиме Наблюдателя!"
+
+# Fly Commands
+fly:
+  self:
+    - "&6&lРежим Полета: &aРежим полета активирован."
+  other:
+    - "&6&lКомандир Полета: &aВы установили режим полета для %selectedPlayer%."
+
+# Spawn Command Messages
+spawn:
+  begin-teleport:
+    - "&6&lТелепортация... &aТелепортация в Точку Спавна через %delay_in_seconds% секунд..."
+  complete-teleport:
+    - "&a&lВуаля! &2Телепортирован в точку спавна."
+  set:
+    - "&a&lРешение Командира: &2Вы установили /spawn на сервере."
+  cancelled:
+    - "Вы не можете двигаться, пока пытаетесь телепортироваться!"
+
+# Error Messages
+error:
+  invalid-player:
+    - "&c&lПредупреждение! &4Неверный Игрок: %invalidName%."

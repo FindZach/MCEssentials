@@ -1,17 +1,58 @@
-#General Settings, Message Notifications Prefix
-message_prefix: "&a[&3MCEssentials&a]&c&l "
+# Command Responses
+basic:
+  ping:
+    - "&a&l¡Pong! &2&lEl servidor está en línea y responde."
+    - "&6&l¡Bing! &2&lTodos los sistemas están operativos."
+  time-change: "&6&lCambio de Hora: &aHas establecido la hora a %time%."
 
-#Command Responses
-ping: "&c¡Pong!"
-gmc: "&cAhora estás en modo creativo!"
-gms: "&cAhora estás en modo supervivencia!"
-gma: "&cAhora estás en modo aventura!"
-gmspec: "&cAhora estás en modo espectador!"
-time-change: "&cHas configurado el tiempo a "
-fly: "&cTu modo de vuelo ha sido activado/desactivado"
-fly-other: "&6Has configurado el vuelo para [selectedName]"
-heal: "&6¡Has sido sanado!"
-feed: "&6¡Has sido alimentado!"
+# Gamemode Switching Command Messages
+gmc:
+  other:
+    - "&6&lModo Cambiado: &aHas establecido el Modo Creativo para %selectedPlayer%."
+    - "&2&l¡Que comience la creatividad!"
+  self:
+    - "&a&lActiva el Flare Artístico: &2Ahora estás en Modo Creativo!"
 
-#Error Messages
-invalid-player: "&cJugador inválido: [InvalidName]"
+# Gamemode Survival
+gms:
+  other:
+    - "&6&lModo Cambiado: &aHas establecido el Modo Supervivencia para %selectedPlayer%."
+  self:
+    - "&a&lInstintos de Supervivencia Activados: &2Ahora estás en Modo Supervivencia!"
+
+# Gamemode Adventure
+gma:
+  other:
+    - "&6&lModo Cambiado: &aHas establecido el Modo Aventura para %selectedPlayer%."
+  self:
+    - "&a&l¿Listo para una Aventura? &2Ahora estás en Modo Aventura!"
+
+# Gamemode Spectator
+gmspec:
+  other:
+    - "&6&lModo Cambiado: &aHas establecido el Modo Espectador para %selectedPlayer%."
+  self:
+    - "&a&lObservador Invisible: &2Ahora estás en Modo Espectador!"
+
+# Fly Commands
+fly:
+  self:
+    - "&6&lModo de Vuelo: &aTu modo de vuelo ha sido activado."
+  other:
+    - "&6&lComandante de Vuelo: &aHas activado el modo de vuelo para %selectedPlayer%."
+
+# Spawn Command Messages
+spawn:
+  begin-teleport:
+    - "&6&lTeletransportando... &aTeletransportando al Punto de Inicio en %delay_in_seconds% segundos..."
+  complete-teleport:
+    - "&a&l¡Zas! &2Teletransportado al punto de inicio."
+  set:
+    - "&a&lDecisión del Comandante: &2Has establecido el punto de inicio del servidor."
+  cancelled:
+    - "No puedes moverte mientras intentas teletransportarte!"
+
+# Error Messages
+error:
+  invalid-player:
+    - "&c&l¡Alerta! &4Jugador Inválido: %invalidName%."
