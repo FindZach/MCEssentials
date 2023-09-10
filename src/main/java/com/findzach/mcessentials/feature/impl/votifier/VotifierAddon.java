@@ -1,16 +1,19 @@
-package com.findzach.mcessentials.config.feature.impl.votifier;
+package com.findzach.mcessentials.feature.impl.votifier;
 
 import com.findzach.mcessentials.feature.Feature;
 import com.vexsoftware.votifier.model.VotifierEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
+
+import java.util.List;
 
 /**
  * @author Zach S <zach@findzach.com>
  * @since 9/9/2023
  */
-public class VoteFeature extends Feature {
+public class VotifierAddon extends Feature {
 
-    public VoteFeature() {
+    public VotifierAddon() {
 
     }
 
@@ -21,7 +24,6 @@ public class VoteFeature extends Feature {
                 "eco give %player% 100",
                 "say %player% has voted!"
         });
-        getFeatureConfig().options().copyDefaults(true); // This is crucial to make sure the defaults are copied over.
     }
 
     @Override
@@ -31,18 +33,22 @@ public class VoteFeature extends Feature {
 
     @Override
     protected void enableFeature() {
-
+        super.enableFeature();
     }
 
     @Override
     protected void disableFeature() {
-
+        super.disableFeature();
     }
 
     @EventHandler
     public void onVote(VotifierEvent event) {
-        System.out.println("We have heard of the vote for: " + event.getVote().getAddress());
-        System.out.println("We have heard of the vote for: " + event.getVote().getUsername());
-        System.out.println("We have heard of the vote for: " + event.getVote().getTimeStamp());
+        if (isEnabled()) {
+            List<String> consoleCommands = getFeatureConfig().getStringList("rewards.commands");
+            for (String s : consoleCommands) {
+                String updatedName = s.replace("%player%", event.getVote().getUsername());
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), updatedName);
+            }
+        }
     }
 }

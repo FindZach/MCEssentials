@@ -1,6 +1,7 @@
 package com.findzach.mcessentials.feature;
 
-import com.findzach.mcessentials.config.feature.impl.votifier.VoteFeature;
+import com.findzach.mcessentials.feature.impl.misc.Sit;
+import com.findzach.mcessentials.feature.impl.votifier.VotifierAddon;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,8 @@ public class FeatureManager {
     }
 
     private void initFeatures() {
-        featureMap.put("VoteFeature", new VoteFeature());
+        featureMap.put("VoteFeature", new VotifierAddon());
+        featureMap.put("SitFeature", new Sit());
     }
 
     public void addFeature(String featureName, Feature feature) {
