@@ -4,6 +4,7 @@ import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.command.CommandInfo;
 import com.findzach.mcessentials.command.CommandType;
 import com.findzach.mcessentials.command.SubCommand;
+import com.findzach.mcessentials.config.ConfigKey;
 import com.findzach.mcessentials.util.Messager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -36,6 +37,7 @@ public class FlyOtherCommand implements SubCommand {
                 .map(s -> s.replace("%selectedPlayer%", selectedPlayer.getDisplayName()))
                 .collect(Collectors.toList());
 
+        Messager.send(selectedPlayer, MCEssentials.getInstance().getMessages(ConfigKey.FLY_SELF.getKey()));
         Messager.send(sender, updatedMessages);
     }
 

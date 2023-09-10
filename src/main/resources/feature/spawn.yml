@@ -11,6 +11,7 @@ spawn:
   spawn-delay: 5
   #The Location of the Spawn Point
   #Set this by standing ingame and typing /setspawn
+  set: false
   location:
     world: world
     x: 0

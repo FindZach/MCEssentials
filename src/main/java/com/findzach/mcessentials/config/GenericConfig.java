@@ -64,6 +64,7 @@ public abstract class GenericConfig {
     public void save() {
         try {
             configuration.save(configFile);
+            configuration = YamlConfiguration.loadConfiguration(configFile);
         } catch (IOException e) {
             e.printStackTrace();
         }

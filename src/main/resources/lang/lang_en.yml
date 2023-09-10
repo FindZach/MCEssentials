@@ -50,6 +50,8 @@ spawn:
     - "&a&lBam! &2Teleported to the spawn point."
   set:
     - "&a&lCommander's Decision: &2You have set the server's /spawn!"
+  cancelled:
+    - "You cannot move while trying to teleport!"
 
 # Error Messages
 error:

@@ -1,12 +1,20 @@
 package com.findzach.mcessentials.feature.impl.spawn.cmd;
 
 import com.findzach.mcessentials.MCEssentials;
+import com.findzach.mcessentials.MCEssentialsConstant;
 import com.findzach.mcessentials.command.CommandInfo;
 import com.findzach.mcessentials.command.CommandType;
 import com.findzach.mcessentials.command.PlayerCommand;
 import com.findzach.mcessentials.feature.FeatureType;
 import com.findzach.mcessentials.feature.impl.spawn.Spawn;
+import com.findzach.mcessentials.util.Messager;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Zach S <zach@findzach.com>
@@ -18,7 +26,32 @@ public class SpawnCommand implements PlayerCommand {
     @Override
     public void execute(Player player, String[] args) {
         Spawn spawnFeature = (Spawn) MCEssentials.getInstance().getFeatureManager().getFeature(FeatureType.SPAWN);
+        MCEssentials mcEssentials = MCEssentials.getInstance();
 
+        if (spawnFeature.getSpawn() == null) {
+            player.sendMessage("There is no Spawn point set, tell Administrator to type /setspawn");
+            return;
+        }
 
+        int delay = spawnFeature.getFeatureConfig().getInt("spawn.spawn-delay");
+
+        List<String> configMessages = mcEssentials.getMessages("spawn.begin-teleport");
+        List<String> updatedMessages = configMessages.stream()
+                .map(s -> s.replace("%delay_in_seconds%", String.valueOf(delay)))
+                .collect(Collectors.toList());
+
+        Messager.send(player,updatedMessages);
+
+        Location requestLocation = player.getLocation().clone();
+
+        Bukkit.getScheduler().runTaskLater(mcEssentials, () -> {
+            if (requestLocation.distance(player.getLocation()) <= 1) {
+                player.teleport(spawnFeature.getSpawn());
+                Messager.send(player, mcEssentials.getMessages("spawn.complete-teleport"));
+            } else {
+                Messager.send(player, mcEssentials.getMessages("spawn.cancelled"));
+            }
+        }, delay * 20);
     }
+
 }
