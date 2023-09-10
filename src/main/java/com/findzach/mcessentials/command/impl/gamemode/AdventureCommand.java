@@ -18,6 +18,6 @@ public class AdventureCommand implements PlayerCommand {
     @Override
     public void execute(Player sender, String[] args) {
         sender.setGameMode(GameMode.ADVENTURE);
-        Messager.send(sender, MCEssentials.getInstance().getMessage("gma"));
+        Messager.send(sender, MCEssentials.getInstance().getMessages("gma.self"));
     }
 }

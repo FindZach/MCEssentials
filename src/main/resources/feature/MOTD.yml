@@ -1,0 +1,18 @@
+#If enabled, will set your MOTD; if disabled, won't do anything.
+isEnabled: true
+
+#IF true, will read from random -> MOTD, it'll pick one everytime a request is made
+#If false, will read from the MOTD message
+random-motd: true
+
+#MOTD - Can leverage https://mctools.org/motd-creator
+#When pasting here, copy the 'For BungeeCord's config.yml file'
+MOTD: "               &9&lMCEssentials &lServer&r\n             &4&k[&4&l Be &2&lgood to &4&lyourself &k]"
+
+
+random:
+  MOTD:
+    - "               &9&lMCEssentials &lServer&r\n             &4&k[&4&l Be &2&lgood to &4&lyourself &k]"
+    - "               &9&lThe Holy &lServer&r\n             &4&k[&4&l John 3:16 &k]"
+    - "               &9&lEssentialsMC &lServer&r\n             &4&k[&4&l Be &1&lgood to &3&lyourself &k]"
+    - "               &9&lMCEssentials &lServer&r\n             &4&k[&4&l Be &1&lgood to &3&lyourself &k]"

@@ -28,7 +28,7 @@ public class VotifierAddon extends Feature {
 
     @Override
     protected String getFeatureName() {
-        return "VoteFeature";
+        return "Vote-Rewards";
     }
 
     @Override

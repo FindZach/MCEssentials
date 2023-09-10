@@ -1,4 +1,4 @@
-package com.findzach.mcessentials.command.impl.admin;
+package com.findzach.mcessentials.command.impl.gamemode.other;
 
 import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.command.CommandInfo;
@@ -11,20 +11,22 @@ import org.bukkit.entity.Player;
 
 /**
  * @author Zach S <zach@findzach.com>
- * @since 9/9/2023
- *
- * Command that toggles the fly for the selected player
+ * @since 9/10/2023
  */
-@CommandInfo(name = "fly <player>", permission = "essentials.mod.fly", description = "Toggles fly for user", commandType = CommandType.SUB_COMMAND)
-public class FlyCommand implements SubCommand {
+
+@CommandInfo(name = "gma <player>", permission = "essentials.gma.other", description = "Toggles fly for user", commandType = CommandType.SUB_COMMAND)
+public class AdventureOtherCommand implements SubCommand {
     @Override
     public void execute(CommandSender sender, String subCommand, String[] args) {
         Player selectedPlayer = Bukkit.getPlayer(args[0]);
+
         if (selectedPlayer == null) {
-            Messager.send(sender, MCEssentials.getInstance().getMessage("invalid-player").replaceAll("[InvalidName]", args[0]));
+            Messager.send(sender, MCEssentials.getInstance().getMessage("invalid-player").replaceAll("%invalidName%", args[0]));
             return;
         }
+
         selectedPlayer.setAllowFlight(!selectedPlayer.getAllowFlight());
-        Messager.send(sender, MCEssentials.getInstance().getMessage("fly-other").replace("[selectedName]", selectedPlayer.getDisplayName()));
+        Messager.send(sender, MCEssentials.getInstance().getMessage("fly-other").replace("%selectedName%", selectedPlayer.getDisplayName()));
+
     }
 }

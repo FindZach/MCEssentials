@@ -18,6 +18,6 @@ public class CreativeCommand implements PlayerCommand {
     @Override
     public void execute(Player sender, String[] args) {
         sender.setGameMode(GameMode.CREATIVE);
-        Messager.send(sender, MCEssentials.getInstance().getMessage("gmc"));
+        Messager.send(sender, MCEssentials.getInstance().getMessages("gmc.self"));
     }
 }

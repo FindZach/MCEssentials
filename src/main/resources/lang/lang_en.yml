@@ -3,15 +3,49 @@ message_prefix: "&a[&3MCEssentials&a]&c&l "
 
 #Command Responses
 ping: "&cPong!"
-gmc: "&cYou're now in creative mode!"
-gms: "&cYou're now in Survival mode!"
-gma: "&cYou're now in Adventure mode!"
-gmspec: "&cYou're now in Spectator Mode!"
-time-change: "&cYou've set the time to "
+
+
+#Gamemode Switching Command Messages
+gmc:
+  other:
+    - "You have set creative mode for %selectedPlayer%"
+    - "&aTake two"
+  self:
+    - "You're now in Creative Mode!"
+gms:
+  other:
+    - "You have set creative mode for %selectedPlayer%"
+  self:
+    - "&eYou're now in Survival mode!"
+gma:
+  other:
+    - "&eYou have set Adventure mode for %selectedPlayer%"
+  self:
+    - "&eYou're now in Adventure mode!"
+gmspec:
+  other:
+    - "You have set Spectator mode for %selectedPlayer%"
+  self:
+    - "&eYou're now in spectator mode!"
+
+#Time Change Commands
+time-change: "&cYou've set the time to %time%"
+
 fly: "&cYour fly mode has been toggled"
-fly-other: "&6You set fly for [selectedName]"
+fly-other: "&6You set fly for %selectedPlayer%"
 heal: "&6You've been healed!"
 feed: "&6You've been Fed!"
 
+#Spawn Command Messages
+spawn:
+  begin-teleport:
+    - "&e&lTeleporting to Spawn in %delay_in_seconds% seconds..."
+  complete-teleport:
+    - "&a&lTeleported to spawn..."
+  set:
+    - "&a&lYou have set the servers /spawn!"
+
 #Error Messages
-invalid-player: "&cInvalid Player: [InvalidName]"
+error:
+  invalid-player:
+    - "&cInvalid Player: %invalidName%"

@@ -3,10 +3,11 @@ package com.findzach.mcessentials;
 import com.findzach.mcessentials.command.CommandManager;
 import com.findzach.mcessentials.config.lang.LanguageManager;
 import com.findzach.mcessentials.feature.FeatureManager;
-import me.clip.placeholderapi.PlaceholderAPI;
-import me.clip.placeholderapi.PlaceholderHook;
+import com.findzach.mcessentials.feature.impl.vanish.VanishManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.List;
 
 public final class MCEssentials extends JavaPlugin {
 
@@ -19,10 +20,12 @@ public final class MCEssentials extends JavaPlugin {
 
     private boolean PLACE_HOLDER_API_ACTIVE = false;
 
+    private VanishManager vanishManager;
+
     @Override
     public void onEnable() {
         instance = this;
-
+        vanishManager = new VanishManager();
         saveDefaultConfig(); // if no config exists, this will save the default one from your resources
 
         String lang = getConfig().getString("language", "lang_en");
@@ -34,6 +37,10 @@ public final class MCEssentials extends JavaPlugin {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             PLACE_HOLDER_API_ACTIVE = true;
         }
+    }
+
+    public VanishManager getVanishManager() {
+        return this.vanishManager;
     }
 
     public boolean isPlaceHolderAPILive() {
@@ -60,5 +67,13 @@ public final class MCEssentials extends JavaPlugin {
 
     public String getMessage(String path) {
         return languageManager.getConfig().getString(path);
+    }
+
+    public List<String> getMessages(String path) {
+        return languageManager.getConfig().getStringList(path);
+    }
+
+    public int getNumber(String path) {
+        return languageManager.getConfig().getInt(path);
     }
 }

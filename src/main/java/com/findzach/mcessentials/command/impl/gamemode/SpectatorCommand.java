@@ -18,6 +18,6 @@ public class SpectatorCommand implements PlayerCommand {
     public void execute(Player sender, String[] args) {
         sender.setGameMode(GameMode.SPECTATOR);
 
-        Messager.send(sender, MCEssentials.getInstance().getMessage("gmspec"));
+        Messager.send(sender, MCEssentials.getInstance().getMessages("gmspec.self"));
     }
 }

@@ -24,12 +24,11 @@ public class Sit extends Feature {
                 "LEGACY_SPRUCE_WOOD_STAIRS",
                 "LEGACY_WOOD_STAIRS"
         });
-        getFeatureConfig().options().copyDefaults(true); // This is crucial to make sure the defaults are copied over.
     }
 
     @Override
     protected String getFeatureName() {
-        return "SitFeature";
+        return "Sit-on-Block";
     }
 
     @EventHandler

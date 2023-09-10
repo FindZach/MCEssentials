@@ -18,15 +18,24 @@ public abstract class Feature implements Listener {
     public Feature() {
         config = new FeatureConfig(getFeatureName());
         if (config.isNewlyCreated()) { // Check if this config was just created
+            addIsEnabledConfig();
             setConfigDefaults(); // Feature-specific defaults
             getFeatureConfig().options().copyDefaults(true); // This is crucial to make sure the defaults are copied over.
             config.save(); // Save the defaults to the file
         }
-        MCEssentials.getInstance().getServer().getPluginManager().registerEvents(this, MCEssentials.getInstance());
+
+        setActive(getFeatureConfig().getBoolean("isEnabled"));
+
+        if (isActive) {
+            MCEssentials.getInstance().getServer().getPluginManager().registerEvents(this, MCEssentials.getInstance());
+        }
     }
-    protected void setConfigDefaults() {
+
+    private void addIsEnabledConfig() {
         getFeatureConfig().addDefault("isEnabled", true);
     }
+    protected abstract void setConfigDefaults();
+
     public boolean isEnabled() {
         return isActive;
     }

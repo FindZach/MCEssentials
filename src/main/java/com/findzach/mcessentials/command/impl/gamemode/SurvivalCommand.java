@@ -18,6 +18,6 @@ public class SurvivalCommand implements PlayerCommand {
     @Override
     public void execute(Player sender, String[] args) {
         sender.setGameMode(GameMode.SURVIVAL);
-        Messager.send(sender, MCEssentials.getInstance().getMessage("gms"));
+        Messager.send(sender, MCEssentials.getInstance().getMessages("gms.self"));
     }
 }
