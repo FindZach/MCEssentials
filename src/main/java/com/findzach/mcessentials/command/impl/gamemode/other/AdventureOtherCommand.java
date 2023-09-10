@@ -4,7 +4,7 @@ import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.command.CommandInfo;
 import com.findzach.mcessentials.command.CommandType;
 import com.findzach.mcessentials.command.SubCommand;
-import com.findzach.mcessentials.config.lang.ConfigKey;
+import com.findzach.mcessentials.config.ConfigKey;
 import com.findzach.mcessentials.util.Messager;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
