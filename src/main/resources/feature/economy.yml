@@ -3,4 +3,5 @@ isEnabled: true
 
 
 economy-details:
-  currency-name: "dollars"
+  currency-name-plural: "dollars"
+  currency-name-singular: "dollar"

@@ -50,10 +50,6 @@ commands:
     description: Feed command
     usage: /<command>
     permission: essentials.feed
-  vanish:
-    description: Vanish command
-    usage: /<command>
-    permission: essentials.vanish
   feature:
     description: Feed command
     usage: /<command>

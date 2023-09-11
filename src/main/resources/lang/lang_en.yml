@@ -5,6 +5,10 @@ basic:
     - "&6&lBing! &2&lAll systems operational."
   # Time Change Commands
   time-change: "&6&lTime Shift: &aYou've set the time to %time%."
+  heal:
+    - "&aYou have been healed!"
+  feed:
+    - "&aYou have been fed!"
 
 # Gamemode Switching Command Messages
 gmc:

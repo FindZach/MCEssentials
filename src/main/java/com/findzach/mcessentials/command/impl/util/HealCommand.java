@@ -18,6 +18,6 @@ public class HealCommand implements PlayerCommand {
     @Override
     public void execute(Player player, String[] args) {
         player.setHealth(player.getMaxHealth());
-        Messager.send(player, MCEssentials.getInstance().getMessage("heal"));
+        Messager.send(player, MCEssentials.getInstance().getMessage("basic.heal"));
     }
 }
