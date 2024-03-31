@@ -5,8 +5,8 @@ package com.findzach.mcessentials.feature;
  * @since 9/10/2023
  */
 public enum FeatureType {
-    ECONOMY("Simple Economy", "economy", false),
-    FIRST_JOIN("First Join", "firstjoin", false),
+    ECONOMY("Simple Economy", "economy", true),
+    FIRST_JOIN("First Join", "firstjoin", true),
     SIT("Sit on Blocks", "sit", true),
     MOTD("Customizable MOTD Display", "motd", true),
     SPAWN("Spawn Management", "spawn", true),

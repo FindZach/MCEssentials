@@ -1,6 +1,8 @@
 package com.findzach.mcessentials.feature.impl.economy;
 
+import com.findzach.mcessentials.MCEssentials;
 import com.findzach.mcessentials.feature.Feature;
+import com.findzach.mcessentials.feature.FeatureManager;
 import com.findzach.mcessentials.feature.FeatureType;
 
 /**
@@ -17,6 +19,13 @@ public class EconomyManager extends Feature {
         return FeatureType.ECONOMY;
     }
 
+    public static String getPluralCurrency() {
+        return MCEssentials.getInstance().getFeatureManager().getFeature(FeatureType.ECONOMY).getFeatureConfig().getString("economy-details.currency-name-plural");
+    }
+
+    public static String getSingularCurrency() {
+        return MCEssentials.getInstance().getFeatureManager().getFeature(FeatureType.ECONOMY).getFeatureConfig().getString("economy-details.currency-name-singular");
+    }
     @Override
     public void onEnable() {
 

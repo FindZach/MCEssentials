@@ -6,7 +6,9 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.OfflinePlayer;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author Zach S <zach@findzach.com>
@@ -67,7 +69,9 @@ public class SimpleEssentialsEconomy implements Economy {
      */
     @Override
     public String format(double amount) {
-        return null;
+        System.out.println("Formatting " + amount);
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        return formatter.format(amount);
     }
 
     /**
@@ -78,7 +82,7 @@ public class SimpleEssentialsEconomy implements Economy {
      */
     @Override
     public String currencyNamePlural() {
-        return null;
+        return EconomyManager.getPluralCurrency();
     }
 
     /**
@@ -89,7 +93,7 @@ public class SimpleEssentialsEconomy implements Economy {
      */
     @Override
     public String currencyNameSingular() {
-        return null;
+        return EconomyManager.getSingularCurrency();
     }
 
     /**
@@ -144,6 +148,7 @@ public class SimpleEssentialsEconomy implements Economy {
      */
     @Override
     public double getBalance(String playerName) {
+        System.out.println("Getting Balance for " + playerName);
         return 0;
     }
 
@@ -155,7 +160,7 @@ public class SimpleEssentialsEconomy implements Economy {
      */
     @Override
     public double getBalance(OfflinePlayer player) {
-        return 0;
+        return 153330.55;
     }
 
     /**
@@ -165,7 +170,7 @@ public class SimpleEssentialsEconomy implements Economy {
      */
     @Override
     public double getBalance(String playerName, String world) {
-        return 0;
+        return 153330.55;
     }
 
     /**
@@ -178,7 +183,7 @@ public class SimpleEssentialsEconomy implements Economy {
      */
     @Override
     public double getBalance(OfflinePlayer player, String world) {
-        return 0;
+        return 153330.55;
     }
 
     /**
@@ -329,7 +334,7 @@ public class SimpleEssentialsEconomy implements Economy {
      */
     @Override
     public EconomyResponse createBank(String name, String player) {
-        return null;
+        return new EconomyResponse(0,0, EconomyResponse.ResponseType.NOT_IMPLEMENTED, "Not Implemented");
     }
 
     /**

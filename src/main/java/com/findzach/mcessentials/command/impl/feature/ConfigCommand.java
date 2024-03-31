@@ -7,16 +7,17 @@ import com.findzach.mcessentials.util.Messager;
 import org.bukkit.command.CommandSender;
 
 /**
- * @author Zach S <zach@findzach.com>
- * @since 9/9/2023
+ * @author: Zach Smith
+ * @date: 3/30/2024
+ * @time: 11:46 PM
  */
+@CommandInfo(name = "feature config <type>", permission = "essentials.feature.config", description = "Feature Configurations", commandType = CommandType.SUB_COMMAND)
+public class ConfigCommand implements SubCommand {
 
-@CommandInfo(name = "feature help", permission = "essentials.feature", description = "Feature Help", commandType = CommandType.SUB_COMMAND)
-public class HelpCommand implements SubCommand {
     @Override
     public void execute(CommandSender sender, String subCommand, String[] args) {
-        Messager.send(sender, "&cSubcommand: " + subCommand);
-
-
+        if (args.length > 0) {
+            Messager.send(sender, "&aConfig for: " + args[0]);
+        }
     }
 }

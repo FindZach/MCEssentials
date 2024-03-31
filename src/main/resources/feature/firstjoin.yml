@@ -1,0 +1,16 @@
+####
+####    MCEssentials - First time Player Logging
+####
+isEnabled: true
+
+#### This will be for when a non new player joins
+welcome:
+  message-enabled: true
+  message: "&7&l%player_name% has logged in, last login: %player_last_played_formatted%"
+
+firstjoin:
+  message: "&a&l%player_name% has joined the server for the first time!"
+  provideItems:
+    ##When Enabled, will provide Users with Items in Inventory
+    enabled: true
+    inventory:

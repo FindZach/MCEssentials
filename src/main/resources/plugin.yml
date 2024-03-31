@@ -1,7 +1,7 @@
 name: MCEssentials
 version: '${project.version}'
 main: com.findzach.mcessentials.MCEssentials
-softdepend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI, Vault]
 commands:
   gmc:
     description: Change Gamemode to Creative
@@ -51,9 +51,9 @@ commands:
     usage: /<command>
     permission: essentials.feed
   feature:
-    description: Feed command
+    description: Feature command
     usage: /<command>
-    permission: essentials.feed
+    permission: essentials.feature
   spawn:
     description: spawn command
     usage: /<command>
@@ -66,3 +66,14 @@ commands:
     description: User Vanish Command
     usage: /<command>
     permission: essentials.mod.vanish
+  balance:
+    description: User Vanish Command
+    aliases:
+      - bal
+      - money
+    usage: /<command>
+    permission: essentials.mod.vanish
+  pay:
+    description: Economy Pay Command
+    usage: /<command>
+    permission: essentials.eco.pay
