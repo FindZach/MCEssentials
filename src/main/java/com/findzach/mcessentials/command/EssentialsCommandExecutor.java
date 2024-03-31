@@ -1,7 +1,7 @@
 package com.findzach.mcessentials.command;
 
-import com.findzach.mcessentials.MCEssentials;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
  * @author Zach S <zach@findzach.com>
  * @since 9/9/2023
  */
-public class EssentialsCommandExecutor implements org.bukkit.command.CommandExecutor {
+public class EssentialsCommandExecutor implements CommandExecutor {
     private CommandManager registry;
 
     public EssentialsCommandExecutor(CommandManager registry) {

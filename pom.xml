@@ -55,7 +55,7 @@
                         <configuration>
                             <target>
                                 <copy file="${project.build.directory}/${project.build.finalName}.jar"
-                                      todir="D:/Programming/FindZach Tech/Minecraft/Servers/MC-1.20.1/plugins"/>
+                                      todir="C:/Users/smith/Programming/Java/Minecraft/1.20.4/plugins"/>
                             </target>
                         </configuration>
                     </execution>
@@ -88,6 +88,10 @@
             <url>https://nexus.bencodez.com/repository/maven-public/</url>
         </repository>
         <repository>
+            <id>rosewood</id>
+            <url>https://repo.rosewooddev.io/repository/public/</url>
+        </repository>
+        <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
@@ -112,12 +116,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.bencodez</groupId>
-            <artifactId>votifierplus</artifactId>
-            <version>1.0.7</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.28</version>
@@ -129,5 +127,12 @@
             <version>1.7</version>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.vexsoftware/votifier -->
+        <dependency>
+            <groupId>com.vexsoftware</groupId>
+            <artifactId>votifier</artifactId>
+            <version>2.7.2</version>
+        </dependency>
+
     </dependencies>
 </project>
