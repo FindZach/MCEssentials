@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
  */
 @CommandInfo(name = "vanish", permission = "essentials.mod.vanish", description = "Toggles Vanish for user", commandType = CommandType.COMMAND)
 public class Vanish implements PlayerCommand {
-    private VanishManager vanishManager = MCEssentials.getInstance().getVanishManager();
+    public static VanishManager vanishManager = new VanishManager();
     @Override
     public void execute(Player player, String[] args) {
         if (vanishManager.isVanished(player)) {

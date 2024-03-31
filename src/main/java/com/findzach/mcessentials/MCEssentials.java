@@ -3,7 +3,6 @@ package com.findzach.mcessentials;
 import com.findzach.mcessentials.command.CommandManager;
 import com.findzach.mcessentials.config.impl.lang.LanguageManager;
 import com.findzach.mcessentials.feature.FeatureManager;
-import com.findzach.mcessentials.feature.impl.vanish.VanishManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,12 +21,9 @@ public final class MCEssentials extends JavaPlugin {
 
     private boolean PLACE_HOLDER_API_ACTIVE = false;
 
-    private VanishManager vanishManager;
-
     @Override
     public void onEnable() {
         instance = this;
-        vanishManager = new VanishManager();
         saveDefaultConfig(); // if no config exists, this will save the default one from your resources
 
         String lang = getConfig().getString("language", "lang_en");
@@ -35,15 +31,11 @@ public final class MCEssentials extends JavaPlugin {
         featureManager = new FeatureManager();
 
         languageManager = new LanguageManager(lang);
-        commandManager = new CommandManager();
+        commandManager = CommandManager.getInstance();
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             PLACE_HOLDER_API_ACTIVE = true;
         }
-    }
-
-    public VanishManager getVanishManager() {
-        return this.vanishManager;
     }
 
     public boolean isPlaceHolderAPILive() {
