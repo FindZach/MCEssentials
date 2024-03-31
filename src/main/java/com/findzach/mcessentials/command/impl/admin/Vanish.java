@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
  * @author Zach S <zach@findzach.com>
  * @since 9/10/2023
  */
-@CommandInfo(name = "vanish", permission = "essentials.mod.vanish", description = "Toggles Vanish for user", commandType = CommandType.SUB_COMMAND)
+@CommandInfo(name = "vanish", permission = "essentials.mod.vanish", description = "Toggles Vanish for user", commandType = CommandType.COMMAND)
 public class Vanish implements PlayerCommand {
     private VanishManager vanishManager = MCEssentials.getInstance().getVanishManager();
     @Override
