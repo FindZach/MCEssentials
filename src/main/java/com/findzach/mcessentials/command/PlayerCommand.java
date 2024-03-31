@@ -11,7 +11,9 @@ public interface PlayerCommand extends Command {
 
     @Override
     default void execute(CommandSender sender, String[] args) {
-        execute((Player) sender, args);
+        if (sender instanceof Player) {
+            execute((Player) sender, args);
+        }
     }
 
     void execute(Player player, String[] args);
