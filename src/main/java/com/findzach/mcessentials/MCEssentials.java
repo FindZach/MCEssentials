@@ -1,12 +1,17 @@
 package com.findzach.mcessentials;
 
-import com.findzach.mcessentials.command.CommandManager;
-import com.findzach.mcessentials.config.impl.lang.LanguageManager;
-import com.findzach.mcessentials.feature.FeatureManager;
-import com.findzach.mcessentials.feature.impl.economy.SimpleEssentialsEconomy;
+import com.findzach.mcessentials.content.command.CommandManager;
+import com.findzach.mcessentials.content.highscore.model.PlayerScore;
+import com.findzach.mcessentials.io.config.impl.lang.LanguageManager;
+import com.findzach.mcessentials.content.feature.FeatureManager;
+import com.findzach.mcessentials.content.feature.impl.economy.SimpleEssentialsEconomy;
+import com.findzach.mcessentials.io.net.jetty.DataFetchServlet;
+import com.findzach.mcessentials.io.net.jetty.HighscoreMainServlet;
 import lombok.Getter;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.Statistic;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,6 +19,9 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -35,6 +43,7 @@ public final class MCEssentials extends JavaPlugin {
         instance = this;
 
         saveDefaultConfig(); // if no config exists, this will save the default one from your resources
+        saveResource("highscores/index.html", false); // false means don't replace if it exists
 
         String lang = getConfig().getString("language", "lang_en");
 
@@ -49,6 +58,16 @@ public final class MCEssentials extends JavaPlugin {
             PLACE_HOLDER_API_ACTIVE = true;
         }
 
+        for (OfflinePlayer offlinePlayer : Bukkit.getOfflinePlayers()) {
+            int ticksPlayed = offlinePlayer.getStatistic(Statistic.PLAY_ONE_MINUTE);
+            double hoursPlayed = ticksPlayed / 72000.0;
+            DecimalFormat df = new DecimalFormat("#.##");
+            df.setRoundingMode(RoundingMode.HALF_UP);
+            String formattedHours = df.format(hoursPlayed);
+
+            System.out.println("Offline Player: " + offlinePlayer.getName() + " Hours Played: " + formattedHours);
+        }
+
         if (!setupEconomy()) {
             getLogger().severe(String.format("[%s] - No Vault dependency found!", getDescription().getName()));
         }
@@ -58,10 +77,9 @@ public final class MCEssentials extends JavaPlugin {
         return PLACE_HOLDER_API_ACTIVE;
     }
 
-
     @Override
     public void onDisable() {
-
+        stopServer();
         commandManager = null;
         instance = null;
     }
@@ -86,15 +104,16 @@ public final class MCEssentials extends JavaPlugin {
         onEnable();
     }
 
-
     private void startServer() {
-        webServer = new Server(8080);
+        webServer = new Server(8185);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         webServer.setHandler(context);
 
         // Add a servlet that listens at the root path
-        context.addServlet(new ServletHolder(new HelloServlet()), "/");
+        context.addServlet(new ServletHolder(new HighscoreMainServlet()), "/");
+
+        context.addServlet(new ServletHolder(new DataFetchServlet()), "/data");
 
         try {
             webServer.start();

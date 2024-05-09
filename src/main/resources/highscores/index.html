@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MCEssentials Highscores">
+    <meta name="keywords" content="highscores, games, rankings, top scores, leaderboards, gaming">
+    <title>Highscores</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Link to Bootswatch Minty (Light Theme) by default -->
+    <link id="bootstrap-css" href="https://cdn.jsdelivr.net/npm/bootswatch@5/dist/darkly/bootstrap.min.css" rel="stylesheet">
+
+<style>
+#skillButtons {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+}
+
+.skill-button {
+    width: 90%;
+    max-width: 300px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 10px 20px; /* Padding for better touch targets */
+    font-size: 16px; /* Larger font size for readability */
+    border-radius: 5px; /* Optional: Rounded corners for aesthetics */
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <button id="themeToggle" class="btn btn-secondary">Toggle Theme</button>
+    <h1 class="text-center mb-4">Highscores</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h2>Skills</h2>
+            <div id="skillButtons">
+                <!-- Skill buttons will be dynamically inserted here by JavaScript -->
+            </div>
+            <!-- Skill Data Placeholder for server-side injection -->
+            <script id="skillsDataPlaceholder"></script>
+        </div>
+        <div class="col-md-8">
+            <h2 id="skillName">Overall</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Player Name</th>
+                    <th scope="col" id="metricHeader">Score</th>
+                </tr>
+                </thead>
+                <tbody id="playerData">
+                <!-- Player data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    updateOnSkillButtonClick(skillsData[0]);
+    if (typeof skillsData !== 'undefined' && skillsData.length > 0) {
+        const skillButtonsContainer = document.getElementById('skillButtons');
+        skillsData.forEach(skill => {
+            const button = document.createElement('button');
+            button.className = 'btn btn-primary skill-button';
+            button.innerText = skill.displayName;  // Use displayName instead of name
+            button.onclick = function() { updateOnSkillButtonClick(skill); };
+            skillButtonsContainer.appendChild(button);
+        });
+    } else {
+        console.log('No skills data available');
+    }
+});
+
+
+
+function fetchPlayerData(skillName) {
+    fetch(`/data?skill=${skillName}`)
+        .then(response => response.json())
+        .then(data => updatePlayerData(data))
+        .catch(error => console.error('Error loading the data:', error));
+}
+
+function updateMetricHeader(metricName) {
+    document.getElementById('metricHeader').innerText = metricName;
+}
+
+function updatePlayerData(data) {
+    const tbody = document.getElementById('playerData');
+    tbody.innerHTML = ''; // Clear previous data
+    data.forEach((player, index) => {
+        const row = `<tr>
+            <th scope="row">${index + 1}</th>
+            <td>${player.name}</td>
+            <td>${player.score}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+    });
+
+}
+
+function updateOnSkillButtonClick(skill) {
+console.log('Skill data:' + skill);
+    fetchPlayerData(skill.displayName);
+    updateMetricHeader(skill.metricName);
+    document.getElementById('skillName').innerText = skill.displayName + ' -- ' + skill.description;
+}
+</script>
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            var cssLink = document.getElementById('bootstrap-css');
+            if (cssLink.href.includes('slate')) {
+                cssLink.href = 'https://cdn.jsdelivr.net/npm/bootswatch@5/dist/darkly/bootstrap.min.css';
+            } else {
+                cssLink.href = 'https://cdn.jsdelivr.net/npm/bootswatch@5/dist/slate/bootstrap.min.css';
+            }
+        });
+    </script>
+</body>
+</html>

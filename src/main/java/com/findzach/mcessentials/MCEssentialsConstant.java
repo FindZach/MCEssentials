@@ -1,12 +1,7 @@
 package com.findzach.mcessentials;
 
-import com.findzach.mcessentials.feature.FeatureType;
-import com.findzach.mcessentials.feature.impl.spawn.Spawn;
-import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Location;
-
-import java.util.Map;
 
 /**
  * @author Zach S <zach@findzach.com>
